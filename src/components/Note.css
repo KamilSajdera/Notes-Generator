@@ -1,0 +1,132 @@
+.note 
+{
+    width: 25px;
+    height: 40px;
+    background-position: bottom!important;
+    background-size: contain!important;
+    background-repeat: no-repeat!important;
+    position: relative;
+}
+
+.pitch-C, .pitch-Cis { bottom: -40px; }
+.pitch-D { bottom: -31px; }
+.pitch-E, .pitch-Es { bottom: -26px; }
+.pitch-F, .pitch-Fis { bottom: -20px; }
+.pitch-G, .pitch-Gis { bottom: -11px; }
+.pitch-A { bottom: -5px; }
+.pitch-H, .pitch-B { bottom: 4px; }
+.pitch-C2 { bottom: 10px; }
+
+.pitch-Cis::before {
+    content: '';
+    background: url('../img/sharp.png');
+    width: 21px;
+    height: 19px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: -4px;
+    left: -13px;
+}
+
+.pitch-Es::before {
+    content: 'b';
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: block;
+    font-family: 'Shadows Into Light', cursive;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: -9px;
+    left: -7px;
+}
+
+.pitch-Fis::before {
+    content: '';
+    background: url('../img/sharp.png');
+    width: 21px;
+    height: 19px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: -4px;
+    left: -13px;
+}
+
+.pitch-B::before {
+    content: 'b';
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: block;
+    font-family: 'Shadows Into Light', cursive;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: -9px;
+    left: -7px;
+}
+
+.pitch-Gis::before {
+    content: '';
+    background: url('../img/sharp.png');
+    width: 21px;
+    height: 19px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: -4px;
+    left: -13px;
+}
+
+.tact-bar 
+{
+    border-left: 1px solid #000;
+}
+
+
+.rest 
+{
+    width: 25px;
+    height: 40px;
+    background-position: bottom!important;
+    background-size: contain!important;
+    background-repeat: no-repeat!important;
+    position: relative;
+}
+
+.rn16 
+{
+    background: url('../img/semibreve-pause.png');
+    top: -16px;
+    width: 35px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.rn8 
+{
+    background: url('../img/semibreve-pause.png');
+    top: -8px;
+    width: 35px;
+    margin-inline: 10%;
+}
+
+.rn4 
+{
+    background: url('../img/crotchet-pause.png');
+    width: 35px;
+    margin-inline: 5%;
+    top: 10px;
+}
+
+.rn2 
+{
+    background: url('../img/quaver-pause.png');
+    width: 20px;
+    margin-inline: 5%;
+    top: 2px;
+}

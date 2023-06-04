@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+.note-key-wrapper
+{
+    position: absolute;
+    left: 35px;
+    display: flex;
+}
+
+.sharp 
+{
+    font-size: 1.55rem;
+    font-weight: 600;
+    font-family: 'Poltawski Nowy', serif;
+}
+
+.bemol 
+{
+    font-size: 1.35rem;
+    font-family: 'Shadows Into Light', cursive;
+    margin-inline: 3px;
+    font-weight: 600;
+}
+
+.bemol:first-child { margin-top: 10px; }
+.bemol:nth-child(2) { margin-top: -11px;}
+.bemol:nth-child(3) { margin-top: 19px; margin-left: -5px; }
+
+.sharp:first-child { margin-top: -16px; }
+.sharp:nth-child(2) { margin-top: 10px; margin-inline: -5px;}
+.sharp:nth-child(3) { margin-top: -20px; }
+
+

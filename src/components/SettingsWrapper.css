@@ -1,0 +1,119 @@
+.settings-wrapper 
+{
+    background: #e6e6e6;
+    width: 29%;
+    padding: 10px;
+    position: sticky;
+    top: 80px;
+    right: 0;
+}
+
+.settings-wrapper h2 
+{
+    text-align: center;
+}
+
+.settings-wrapper fieldset
+{
+    width: 80%;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.settings-wrapper legend 
+{
+    margin-left: 10px;
+    padding: 0 5px;
+}
+
+.settings-wrapper .radios
+{
+    margin: 10px 15px;
+}
+
+.settings-wrapper div input 
+{
+    margin-right: 5px;
+}
+
+.settings-properties 
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px; 
+    padding: 0 10px;
+}
+
+.property-item 
+{
+    width: 40%;
+}
+
+
+#pitch-items,
+#value-items
+{
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    outline: none;
+    border: none;
+    margin-top: 10px;
+}
+
+#pitch-items option,
+#value-items option
+{
+    border: none;
+    outline: none;
+    background: #e0e0e0;
+}
+
+.set-note 
+{
+    display: block;
+    margin: 40px auto 20px auto;
+    padding: 8px 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #70a8ff;
+    background: #7bbeff;
+    color: #3f4755;
+    cursor: pointer;
+    box-shadow: 0px 0px -5px 5px transparent;
+    transition: all .2s ease;
+}
+
+.set-note:hover
+{
+    box-shadow: 0px 0px 20px -3px #7bbeff;
+    background: #60a7ee;
+}
+
+
+.remove-note
+{
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    padding: 5px 10px;
+    outline: none;
+    background: #4c4242;
+    color: #fefefe;
+    font-weight: 600;
+    border: none;
+    transition: opacity .1s ease-in-out;
+    cursor: pointer;
+}
+
+.remove-note:hover 
+{
+    opacity: 0.9;
+}
+
+.not-allowed {
+    cursor: not-allowed;
+}

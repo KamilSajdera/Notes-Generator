@@ -1,0 +1,52 @@
+.drawn-notes 
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+
+}
+
+.drawn-notes ul 
+{
+    width: 50%;
+    padding-left: 15%;
+    border-right: 2px solid #000;
+}
+
+.drawn-notes ul:nth-child(2)
+{
+    border-right: none;
+    padding-left: 2%;
+}
+
+.drawn-notes li 
+{
+    list-style-type: none;
+    display: inline-block;
+}
+
+.n16
+{
+    background: url('../img/whole-note.png');
+    width: 17px;
+}   
+
+.n8
+{
+    background: url('../img/minim.png');
+    margin-inline: 10%;
+}
+
+.n4
+{
+    background: url('../img/crotchet.png');
+    margin-inline: 5%;
+}
+
+.n2
+{
+    background: url('../img/quaver.png');
+    width: 35px;
+}
+

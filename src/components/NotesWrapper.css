@@ -1,0 +1,64 @@
+.notes-wrapper 
+{
+    width: 69%;
+    height: auto;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.notes-wrapper header
+{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.notes-title
+{
+    border: none;
+    text-align: center;
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 10px 0;
+    border-bottom: 1px solid transparent;
+}
+
+.notes-title:focus
+{
+    outline: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.notes-title::placeholder
+{
+    color: #5c5c5c;
+}
+
+.print 
+{
+    position: absolute;
+    outline: none;
+    padding: 5px;
+    top: 10px;
+    right: 20px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+}
+
+.print img 
+{
+    max-width: 21px;
+    padding-right: 5px;
+}
+
+.print-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }

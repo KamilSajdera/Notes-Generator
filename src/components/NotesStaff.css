@@ -1,0 +1,41 @@
+.staff-items
+{
+    margin: 45px auto;
+}
+
+.staff-item
+{
+    list-style-type: none;
+    width: 90%;
+    height: 60px;
+    margin: 50px auto;
+    position: relative;
+    border-left: 1px solid #000;
+    border-right: 2px solid #000;
+}
+
+.staff-item__lines 
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.staff-item__line
+{
+    width: 100%;
+    height: 0.01em;
+    background: #6c6c6c;
+}
+
+.clef
+{
+    width: 48px;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+
