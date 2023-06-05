@@ -1,47 +1,89 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import './SettingsWrapper.css';
 
-const ValueOptions = props =>
-{
+const ValueOptions = (props) => {
     const currentLatency = props.onCurrentLatency;
 
-    const [isDisabled, setIsDisabled] = useState(true)
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [selectedOption, setSelectedOption] = useState('none');
 
-    const valueItemsHandler = event => {
-         props.onValueOptions({
-            value: event.target.value,
-            latency: parseInt(event.target.value.substring(1))
-        })
-    }
+    
+    const options = useMemo(
+        () => [
+            { value: 'none', label: 'Select' },
+            { value: 'n16',
+              label: 'Semibreve [4/4]',
+              disabled: ((currentLatency >= 1 && currentLatency < 16) || currentLatency > 16) && isDisabled,
+            },
+            { value: 'n8',
+              label: 'Minim [2/4]',
+              disabled: ((currentLatency > 8 && currentLatency < 16) || currentLatency > 24) && isDisabled,
+            },
+            { value: 'n4',
+              label: 'Crotchet [1/4]',
+              disabled: ((currentLatency > 12 && currentLatency < 16) || currentLatency > 28) && isDisabled,
+            },
+            { value: 'n2',
+              label: 'Quaver [1/8]',
+              disabled: ((currentLatency > 14 && currentLatency < 16) || currentLatency > 30) && isDisabled,
+            },
+        ],
+        [currentLatency, isDisabled]
+    );
+
+
+    // if latency of selected note is bigger (option is disabled) than needed,
+    // find next possible option (value of note)
+    useEffect(() => {
+        const selectedOptionIndex = options.findIndex((option) => option.value === selectedOption);
+
+        if (selectedOptionIndex !== -1 && options[selectedOptionIndex].disabled) {
+            const nextAvailableOption = options.find(
+                (option, index) => index > selectedOptionIndex && !option.disabled
+            );
+
+            if (nextAvailableOption) {
+                setSelectedOption(nextAvailableOption.value);
+                
+                props.onValueOptions({
+                    value: nextAvailableOption.value,
+                    latency: parseInt(nextAvailableOption.value.substring(1))
+                });
+            }
+        }
+    }, [options, selectedOption, props]);
+
+
+    const valueItemsHandler = (event) => {
+        const selectedValue = event.target.value;
+        setSelectedOption(selectedValue);
+
+        const selectedOption = options.find((option) => option.value === selectedValue);
+        const selectedLatency = parseInt(selectedOption.value.substring(1));
+
+        props.onValueOptions({
+            value: selectedValue,
+            latency: selectedLatency,
+        });
+    };
+
 
     useEffect(() => {
-        if(currentLatency===32)
+        if(currentLatency === 32)
             setIsDisabled(false)
-        else
+        else 
             setIsDisabled(true)
     }, [currentLatency])
 
     return (
-        <select id="value-items" onChange={valueItemsHandler}>
-            <option value="none">Select</option>
-            <option value="n16" 
-                disabled={((currentLatency >= 1 && currentLatency < 16) || currentLatency > 16) && isDisabled}>
-                Semibreve [4/4]
-            </option>
-            <option value="n8" 
-                disabled={((currentLatency > 8 && currentLatency < 16) || currentLatency > 24) && isDisabled}>
-                    Minim [2/4]
-            </option>
-            <option value="n4" 
-                disabled={((currentLatency > 12 && currentLatency < 16) || currentLatency > 28) && isDisabled}>
-                Crotchet [1/4]
-            </option>
-            <option value="n2" 
-                disabled={((currentLatency > 14 && currentLatency < 16) || currentLatency > 30) && isDisabled}>
-                Quaver [1/8]
-            </option>
+        <select id="value-items" onChange={valueItemsHandler} value={selectedOption}>
+            {options.map((option) => (
+                <option key={option.value} value={option.value} disabled={option.disabled}>
+                    {option.label}
+                </option>
+            ))}
         </select>
-    )   
-}
+    );
+};
 
 export default ValueOptions;
