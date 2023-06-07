@@ -10,7 +10,7 @@
 .drawn-notes ul 
 {
     width: 50%;
-    padding-left: 15%;
+    padding-left: 12%;
     border-right: 2px solid #000;
 }
 
@@ -29,7 +29,7 @@
 .n16
 {
     background: url('../img/whole-note.png');
-    width: 17px;
+    width: 25px;
 }   
 
 .n8
