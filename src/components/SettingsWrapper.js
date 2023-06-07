@@ -5,9 +5,7 @@ import ValueOptions from './ValueOptions';
 
 import './SettingsWrapper.css';
 
-
-const SettingsWrapper = props => 
-{
+const SettingsWrapper = props => {
 
     const [type, setType] = useState('');
     const [pitch, setPitch] = useState('none');
@@ -22,14 +20,13 @@ const SettingsWrapper = props =>
         setType(event.target.value);
 
         if(event.target.value === 'rest')
-            setIsPause(true)
+            setIsPause(true)      
         else 
             setIsPause(false)
     }
 
-    const pitchItemsHandler = event => {
-        setPitch(event.target.value);
-    }
+    const pitchItemsHandler = event => setPitch(event.target.value);
+
 
     const valueOptionsHandler = note => {
         setValue(note.value);
@@ -37,13 +34,10 @@ const SettingsWrapper = props =>
     }
 
    
-    const sendNoteDetails = event =>
-    {
+    const sendNoteDetails = event => {
         event.preventDefault();
 
-
-        if(type.trim() === '')
-        {
+        if(type.trim() === '') {
             setError({
                 title: "Select the right type!",
                 message: "You have to choose whether your next note should be a note or a rest."
@@ -52,8 +46,7 @@ const SettingsWrapper = props =>
             return;
         }
 
-        if(pitch.trim() === 'none' && !isPause)
-        {
+        if(pitch.trim() === 'none' && !isPause) {
             setError({
                 title: "Select the right pitch!",
                 message: "You need to choose the right pitch."
@@ -62,8 +55,7 @@ const SettingsWrapper = props =>
             return; 
         }
 
-        if(value.trim() === 'none')
-        {
+        if(value.trim() === 'none') {
             setError({
                 title: "Select the right value!",
                 message: "You need to choose the right value."
@@ -84,10 +76,7 @@ const SettingsWrapper = props =>
     }
 
 
-    const activeHandler = isActive =>
-    {
-        setError(isActive)
-    }
+    const activeHandler = isActive => setError(isActive);
     
     const removeNoteHandler = () => {
         if(!type)
@@ -133,6 +122,20 @@ const SettingsWrapper = props =>
                     <option value="B">b</option>
                     <option value="H">H</option>
                     <option value="C2">C2</option>
+                    <option value="Cis2">C#2</option>
+                    <option value="D2">D2</option>
+                    <option value="Es2">Es2</option>
+                    <option value="E2">E2</option>
+                    <option value="F2">F2</option>
+                    <option value="Fis2">F#2</option>
+                    <option value="G2">G2</option>
+                    <option value="Gis2">G#2</option>
+                    <option value="A2">A2</option>
+                    <option value="B2">b2</option>
+                    <option value="H2">H2</option>
+                    <option value="C3">C3</option>
+                    <option value="Cis3">C#3</option>
+
                 </select>
                 </div>
 
