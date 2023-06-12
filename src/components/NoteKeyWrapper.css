@@ -23,12 +23,12 @@
     font-weight: 600;
 }
 
-.bemol:first-child { margin-top: 10px; }
-.bemol:nth-child(2) { margin-top: -11px;}
-.bemol:nth-child(3) { margin-top: 19px; margin-left: -5px; }
+.bemol:first-child { margin-top: 6px; }
+.bemol:nth-child(2) { margin-top: -13px;}
+.bemol:nth-child(3) { margin-top: 12px; margin-left: -5px; }
 
 .sharp:first-child { margin-top: -16px; }
-.sharp:nth-child(2) { margin-top: 10px; margin-inline: -5px;}
+.sharp:nth-child(2) { margin-top: 6px; margin-inline: -5px;}
 .sharp:nth-child(3) { margin-top: -20px; }
 
 
