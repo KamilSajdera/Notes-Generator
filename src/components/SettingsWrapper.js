@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import ErrorModal from './ErrorModal';
 import ValueOptions from './ValueOptions';
+import NotesContext from '../store/notes-context';
 
 import './SettingsWrapper.css';
 
@@ -14,6 +15,8 @@ const SettingsWrapper = props => {
 
     const [isPause, setIsPause] = useState(false);
     const [error, setError] = useState({})
+
+    const ctx = useContext(NotesContext)
 
     const noteTypeHandler = event => {
         setType(event.target.value);
@@ -75,10 +78,10 @@ const SettingsWrapper = props => {
     const activeHandler = isActive => setError(isActive);
     
     const removeNoteHandler = () => {
-        if(!type)
+        if(ctx.notes.length === 0)
             return;
     
-        props.onRemoveNote();
+        ctx.onRemoveNote();
     }
 
     return (
@@ -137,14 +140,14 @@ const SettingsWrapper = props => {
 
                 <div className='property-item'>
                 <h3>Choose a value</h3>
-                <ValueOptions onValueOptions={valueOptionsHandler} onCurrentLatency={props.onCurrentLatency}/>
+                <ValueOptions onValueOptions={valueOptionsHandler}/>
                 </div>
             </div>
 
             <button className='set-note'>Add Note</button>
             </form>
 
-            <button className={`remove-note ${ type ? '' : 'not-allowed'}`} onClick={removeNoteHandler}>Remove Last Note</button>
+            <button className={`remove-note ${ ctx.notes.length > 0 ? '' : 'not-allowed'}`} onClick={removeNoteHandler}>Remove Last Note</button>
         </div>
     )
 }

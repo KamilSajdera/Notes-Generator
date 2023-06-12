@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import NotesWrapper from "./components/NotesWrapper";
 import SettingsWrapper from './components/SettingsWrapper';
@@ -31,22 +31,22 @@ function App() {
   }
 
   return (
-    <div className='container'>
-      <header className="header">
-        <p>Notes generator</p>
-      </header>
-      <GenericSettings onSetKey={setKeyHandler} />
-      <div className='generator-elements'>
-          <NotesContext.Provider value={{notes: arrayNotes, notesKey: noteKey}}>
+    <NotesContext.Provider value={{
+      notes: arrayNotes, 
+      notesKey: noteKey, 
+      currentLatency: currentLatency,
+      onRemoveNote: removeNoteHandler}}>
+      <div className='container'>
+          <header className="header">
+            <p>Notes generator</p>
+          </header>
+          <GenericSettings onSetKey={setKeyHandler} />
+          <div className='generator-elements'>
             <NotesWrapper onCurrentLatency={currentLatencyHandler} />
-          </NotesContext.Provider>
-          <SettingsWrapper 
-          onAddNote={addNoteHandler} 
-          onCurrentLatency={currentLatency} 
-          onRemoveNote={removeNoteHandler} />
+            <SettingsWrapper onAddNote={addNoteHandler} />     
+          </div>  
       </div>
-      
-    </div>
+    </NotesContext.Provider>
   )
 }
 

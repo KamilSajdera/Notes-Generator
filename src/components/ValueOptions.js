@@ -1,13 +1,15 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useContext } from 'react';
+import NotesContext from '../store/notes-context';
 import './SettingsWrapper.css';
 
 const ValueOptions = (props) => {
-    const currentLatency = props.onCurrentLatency;
+
+    const currentLatency = useContext(NotesContext).currentLatency
 
     const [isDisabled, setIsDisabled] = useState(true);
     const [selectedOption, setSelectedOption] = useState('none');
 
-    
+     
     const options = useMemo(
         () => [
             { value: 'none', label: 'Select' },
