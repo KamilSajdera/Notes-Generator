@@ -15,7 +15,6 @@ const SettingsWrapper = props => {
     const [isPause, setIsPause] = useState(false);
     const [error, setError] = useState({})
 
-
     const noteTypeHandler = event => {
         setType(event.target.value);
 
@@ -27,13 +26,11 @@ const SettingsWrapper = props => {
 
     const pitchItemsHandler = event => setPitch(event.target.value);
 
-
     const valueOptionsHandler = note => {
         setValue(note.value);
         setLatency(note.latency);
     }
-
-   
+ 
     const sendNoteDetails = event => {
         event.preventDefault();
 
@@ -74,7 +71,6 @@ const SettingsWrapper = props => {
 
         props.onAddNote(noteDetails)
     }
-
 
     const activeHandler = isActive => setError(isActive);
     

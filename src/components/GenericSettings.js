@@ -1,10 +1,8 @@
-
-
 import './GenericSettings.css';
 
 const GenericSettings = props => {
-    const enteredKeyHandler = event =>
-    {
+
+    const enteredKeyHandler = event => {
         props.onSetKey({
             id: event.target.value,
             accidental: parseInt(event.target.value)    
@@ -27,7 +25,7 @@ const GenericSettings = props => {
             </div>
 
             <form className='settings-rate'>
-                <input type='number' min='80' max='160' step='1' name='bpm'></input>
+                <input type='number' min='80' max='160' step='1' name='bpm' />
                 <label htmlFor='bpm'>bpm</label>
                 <button type='submit' className='play-rate'>Play</button>
             </form>

@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import './NotesWrapper.css'
 import NotesStaff from './NotesStaff';
+import NotesContext from '../store/notes-context';
 import printer from  '../img/printer.png'
  
 const NotesWrapper = props => {
-  const arrayNotes = props.notes || [];
+
+  const notesContext = useContext(NotesContext)
+  const arrayNotes = notesContext.notes;
   const latencyLimit = 32;
 
   const componentRef = React.useRef();
@@ -26,7 +29,7 @@ const NotesWrapper = props => {
 
       if (currentLatency + note.latency > latencyLimit) {
         notesStaffs.push(
-          <NotesStaff key={i} notes={currentNotes} notesKey={props.notesKey}/>
+          <NotesStaff key={i} notes={currentNotes}/>
         );
         currentNotes = [];
         currentLatency = 0;
@@ -41,7 +44,7 @@ const NotesWrapper = props => {
     // Dodaj ostatni NotesStaff, jeśli istnieją nuty
     if (currentNotes.length > 0) {
       notesStaffs.push(
-        <NotesStaff key={arrayNotes.length} notes={currentNotes} notesKey={props.notesKey}/>
+        <NotesStaff key={arrayNotes.length} notes={currentNotes}/>
       );
     }
 

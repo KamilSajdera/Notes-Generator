@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import NotesWrapper from "./components/NotesWrapper";
 import SettingsWrapper from './components/SettingsWrapper';
 import GenericSettings from "./components/GenericSettings";
+import NotesContext from "./store/notes-context";
 import './App.css';
 
 function App() {
@@ -18,13 +19,8 @@ function App() {
      })
   }
 
-  const setKeyHandler = key => {
-    setNoteKey(key)
-  }
-
-  const currentLatencyHandler = value => {
-    setCurrentLatency(value)
-  }
+  const setKeyHandler = key => setNoteKey(key);
+  const currentLatencyHandler = value => setCurrentLatency(value);
 
   const removeNoteHandler = () => {
     setArrayNotes((prevNotes) => {
@@ -41,11 +37,9 @@ function App() {
       </header>
       <GenericSettings onSetKey={setKeyHandler} />
       <div className='generator-elements'>
-          <NotesWrapper
-          notes={arrayNotes} 
-          notesKey={noteKey} 
-          onCurrentLatency={currentLatencyHandler} />
-          
+          <NotesContext.Provider value={{notes: arrayNotes, notesKey: noteKey}}>
+            <NotesWrapper onCurrentLatency={currentLatencyHandler} />
+          </NotesContext.Provider>
           <SettingsWrapper 
           onAddNote={addNoteHandler} 
           onCurrentLatency={currentLatency} 

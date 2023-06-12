@@ -7,7 +7,6 @@ const DrawNotes = (props) => {
   const userNotes = props.notes;
   const notesValue = userNotes.reduce((sum, note) => sum + note.latency, 0);
   
-
   let firstPart = [];
   let secondPart = [];
   
@@ -44,7 +43,6 @@ const DrawNotes = (props) => {
             className={note.class + ' ' + note.pitch}
             type={note.type}
             notesValue={notesValue}
-            notes={userNotes}
           />
         ))}
       </ul>
@@ -58,7 +56,6 @@ const DrawNotes = (props) => {
               className={note.class + ' ' + note.pitch}
               type={note.type}
               notesValue={notesValue}
-              notes={userNotes}
             />
           ))}
         </ul>

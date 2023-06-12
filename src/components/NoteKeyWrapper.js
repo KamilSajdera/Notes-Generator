@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
+import NotesContext from '../store/notes-context';
 import './NoteKeyWrapper.css';
 
-const NoteKeyWrapper = (props) => {
+const NoteKeyWrapper = () => {
   const [keyElements, setKeyElements] = useState([]);
-  const note = props.notesKey;
+  const note = useContext(NotesContext).notesKey;
 
   useEffect(() => {
     const handleNotesKey = () => {
