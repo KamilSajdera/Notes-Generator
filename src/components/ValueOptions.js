@@ -78,13 +78,16 @@ const ValueOptions = (props) => {
     }, [currentLatency])
 
     return (
-        <select id="value-items" onChange={valueItemsHandler} value={selectedOption}>
-            {options.map((option) => (
-                <option key={option.value} value={option.value} disabled={option.disabled}>
-                    {option.label}
-                </option>
-            ))}
-        </select>
+        <div className='property-item'>
+        <h3>Choose a value</h3>
+            <select id="value-items" onChange={valueItemsHandler} value={selectedOption}>
+                {options.map((option) => (
+                    <option key={option.value} value={option.value} disabled={option.disabled}>
+                        {option.label}
+                    </option>
+                ))}
+            </select>
+        </div>
     );
 };
 
