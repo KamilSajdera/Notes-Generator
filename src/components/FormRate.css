@@ -9,7 +9,7 @@
 .settings-rate input
 {
     padding: 5px;
-    -webkit-appearance: none;
+    
     text-align: center;
     font-weight: 600;
     outline: none;
@@ -17,6 +17,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1.2rem;
+    width: 84px;
 }
 
 .settings-rate label 
@@ -29,8 +30,14 @@
 
 .settings-rate input::-webkit-outer-spin-button,
 .settings-rate input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@-moz-document url-prefix() {
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
 }
 
 .play-rate
