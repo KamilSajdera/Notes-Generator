@@ -1,0 +1,68 @@
+.settings-rate 
+{
+    margin-right: 2px;
+    display: flex;
+    position: relative;
+}
+
+
+.settings-rate input
+{
+    padding: 5px;
+    -webkit-appearance: none;
+    text-align: center;
+    font-weight: 600;
+    outline: none;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.settings-rate label 
+{
+    position: absolute;
+    font-size: 0.7rem;
+    bottom: 1px;
+    left: 57px;
+}
+
+.settings-rate input::-webkit-outer-spin-button,
+.settings-rate input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.play-rate
+{
+    width: 65px;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background-color: #77bc77;
+    position: relative;
+    border-radius: 2px;
+    transition: background-color .3s ease;
+}
+
+.play-rate::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d4d2d2;
+    transition: width .2s ease-in-out;
+}
+
+.play-rate:hover::after{
+    width: 100%;
+}
+
+.red {
+    background-color: #bc7777;
+}

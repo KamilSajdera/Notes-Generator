@@ -1,3 +1,4 @@
+import FormRate from './FormRate';
 import './GenericSettings.css';
 
 const GenericSettings = props => {
@@ -24,11 +25,7 @@ const GenericSettings = props => {
                 </select>
             </div>
 
-            <form className='settings-rate'>
-                <input type='number' min='80' max='160' step='1' name='bpm' />
-                <label htmlFor='bpm'>bpm</label>
-                <button type='submit' className='play-rate'>Play</button>
-            </form>
+            <FormRate />
         </div>
     )
 }
