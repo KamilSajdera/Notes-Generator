@@ -211,3 +211,17 @@
     margin-inline: 5%;
     top: -1px;
 }
+
+.active-note::after {
+    content: '';
+    display: block;
+    width: 100%;
+    max-width: 25px;
+    height: 3px;
+    position: absolute;
+    bottom: -8px;   
+    background: #ff521c;
+    -webkit-box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
+    -moz-box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
+    box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
+}
