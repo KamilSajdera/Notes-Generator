@@ -24,7 +24,7 @@ const GenericSettings = props => {
                     <option value='6'>Es-dur</option>
                 </select>
             </div>
-
+          
             <FormRate />
         </div>
     )

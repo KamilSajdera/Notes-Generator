@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState, useContext } from 'react'
 
 import NotesContext from '../store/notes-context';
+import { MetronomeContext } from '../store/metronome-context';
 import './FormRate.css';
 
 let clicks = 4;
@@ -33,10 +34,13 @@ const playSound = notes => {
 };
 
 const FormRate = () => {
-    const notes = useContext(NotesContext).notes;
+    const { notes } = useContext(NotesContext);
+    const metronomeContext = useContext(MetronomeContext)
+
     const [bpm, setBpm] = useState();
-    const [isPlaying, setIsPlaying] = useState(false);
     const enteredBpm = useRef(0);
+
+    const [isPlaying, setIsPlaying] = useState(false);
     const playSound2TimeoutIdRef = useRef();
 
     const startMetronomeHandler = event => {
@@ -48,9 +52,11 @@ const FormRate = () => {
         if (!isPlaying) {
             setBpm(enteredBpm.current.value);
             setIsPlaying(true);
+            metronomeContext.onPlayMetronome(true)
             currentNote = 0;
         } else {
             setIsPlaying(false);
+            metronomeContext.onPlayMetronome(false)
             if (playSound2TimeoutIdRef.current) {
                 clearTimeout(playSound2TimeoutIdRef.current);
             }
@@ -70,6 +76,8 @@ const FormRate = () => {
             oscillator.connect(output);
             oscillator.start();
             oscillator.stop(audioContext.currentTime + duration - 0.1);
+
+            metronomeContext.onChangeNote(currentNote)
         };
 
         const playNextNote = () => {
@@ -135,6 +143,7 @@ const FormRate = () => {
                 if (currentNote < notes.length) playSound(notes);
                 else {
                     setIsPlaying(false);
+                    metronomeContext.onPlayMetronome(false)
                     clearInterval(timerId);
                 }
             }, intervalMetronome);
@@ -151,6 +160,7 @@ const FormRate = () => {
         };
     }, [bpm, isPlaying, notes]);
 
+    
     return (
         <form className='settings-rate' onSubmit={startMetronomeHandler}>
             <input type='number' min='60' max='160' step='1' name='bpm' ref={enteredBpm} />

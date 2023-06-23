@@ -1,9 +1,12 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 
 import NotesWrapper from "./components/NotesWrapper";
 import SettingsWrapper from './components/SettingsWrapper';
 import GenericSettings from "./components/GenericSettings";
+
 import NotesContext from "./store/notes-context";
+import { MetronomeProvider } from "./store/metronome-context";
+
 import './App.css';
 
 function App() {
@@ -11,7 +14,6 @@ function App() {
   const [arrayNotes, setArrayNotes] = useState([]);
   const [noteKey, setNoteKey] = useState();
   const [currentLatency, setCurrentLatency] = useState();
-
 
   const addNoteHandler = enteredNote => {
     setArrayNotes((prevNote) => {
@@ -35,16 +37,19 @@ function App() {
       notes: arrayNotes, 
       notesKey: noteKey, 
       currentLatency: currentLatency,
-      onRemoveNote: removeNoteHandler}}>
+      onRemoveNote: removeNoteHandler
+      }}>
       <div className='container'>
           <header className="header">
             <p>Notes generator</p>
           </header>
-          <GenericSettings onSetKey={setKeyHandler} />
-          <div className='generator-elements'>
-            <NotesWrapper onCurrentLatency={currentLatencyHandler} />
-            <SettingsWrapper onAddNote={addNoteHandler} />     
-          </div>  
+          <MetronomeProvider>
+            <GenericSettings onSetKey={setKeyHandler}/>
+            <div className='generator-elements'>
+              <NotesWrapper onCurrentLatency={currentLatencyHandler} />
+              <SettingsWrapper onAddNote={addNoteHandler} />     
+            </div>  
+          </MetronomeProvider>
       </div>
     </NotesContext.Provider>
   )
