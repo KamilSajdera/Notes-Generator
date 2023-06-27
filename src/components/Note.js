@@ -5,23 +5,30 @@ import './Note.css';
 
 const Note = props => {
   const { notes } = useContext(NotesContext)
-  const { currentNote, isPlaying } = useContext(MetronomeContext);
+  const { currentNote, isPlaying, setCurrentNote } = useContext(MetronomeContext);
   const notesElement = document.querySelectorAll(".note");
 
   useEffect(() => {
-    if (notesElement[currentNote] === undefined || !isPlaying) 
+      if(notesElement[currentNote] === undefined || !isPlaying) 
         return;
 
-    notesElement[currentNote].classList.add('active-note');
+      if (currentNote > 0) notesElement[currentNote - 1].classList.remove('active-note');
 
-    if (currentNote > 0) notesElement[currentNote - 1].classList.remove('active-note');
-    
-    if (currentNote === notes.length - 1) {
-      setTimeout(() => {
-        notesElement[notes.length - 1].classList.remove('active-note');
-      }, 700);
-    }
-  }, [currentNote]);
+      if (currentNote === notes.length - 1) {
+        setTimeout(() => {
+          notesElement[notes.length - 1].classList.remove('active-note');
+          setCurrentNote(0);
+        }, 700);
+      }
+
+      notesElement[currentNote].classList.add('active-note')
+  }, [currentNote, isPlaying, notes.length, notesElement, setCurrentNote]);
+
+
+  useEffect(() => {
+    if(currentNote > 0)
+      notesElement[currentNote].classList.remove('active-note');
+  }, [isPlaying])
 
   if (props.type === 'rest')
     return <li className={'note rest r' + props.className.substring(0, 3).trim()}>{props.children}</li>;
