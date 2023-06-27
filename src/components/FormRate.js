@@ -122,6 +122,9 @@ const FormRate = () => {
                 else if (notes[currentNote].pitch === 'pitch-Cis3') frequency = 1108;
                 else frequency = 0;
 
+                if(notes[currentNote].type === 'rest')
+                    frequency = 20000; // human can hear to 20kHz
+
                 playNote(frequency, duration);
 
                 currentNote++;

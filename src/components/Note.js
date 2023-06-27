@@ -24,7 +24,7 @@ const Note = props => {
   }, [currentNote]);
 
   if (props.type === 'rest')
-    return <li className={'rest r' + props.className.substring(0, 3).trim()}>{props.children}</li>;
+    return <li className={'note rest r' + props.className.substring(0, 3).trim()}>{props.children}</li>;
   else
     return <li className={'note ' + props.className}>{props.children}</li>;
 }
