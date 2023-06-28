@@ -18,7 +18,7 @@ const Note = props => {
         setTimeout(() => {
           notesElement[notes.length - 1].classList.remove('active-note');
           setCurrentNote(0);
-        }, 700);
+        }, 1000);
       }
 
       notesElement[currentNote].classList.add('active-note')
