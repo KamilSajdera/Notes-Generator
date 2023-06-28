@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import './NotesWrapper.css'
@@ -7,23 +7,6 @@ import NotesContext from '../store/notes-context';
 import printer from  '../img/printer.png'
  
 const NotesWrapper = props => {
-
-  const [isAvailable, setIsAvailable] = useState(true)
-
-  useEffect(() => {
-    function handleResize() {
-      if(window.innerWidth < 879) 
-        setIsAvailable(false)
-      else
-        setIsAvailable(true)
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const notesContext = useContext(NotesContext)
   const arrayNotes = notesContext.notes;
@@ -70,23 +53,19 @@ const NotesWrapper = props => {
 
   return (
     <React.Fragment>
-    { isAvailable ? <div className='notes-wrapper' ref={componentRef}>
+    <div className='notes-wrapper' ref={componentRef}>
       <header>
         <input className='notes-title' placeholder='Enter a title here' />
       </header>
       <ul className='staff-items'>
         {renderNotesStaffs()}
       </ul>
-    </div> : 
-    <p style={{paddingTop: 70, marginInline: 'auto'}}>You cannot use this app in this resolution :(</p>
-    }
-    
-
-  <button className='print' onClick={handlePrint}>
-    <img src={printer} alt='printer' />
-    Print
-  </button>
-  </React.Fragment>
+    </div> 
+    <button className='print' onClick={handlePrint}>
+      <img src={printer} alt='printer' />
+      Print
+    </button>
+    </React.Fragment>
   );
 };
 

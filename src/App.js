@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import NotesWrapper from "./components/NotesWrapper";
 import SettingsWrapper from './components/SettingsWrapper';
@@ -14,6 +14,7 @@ function App() {
   const [arrayNotes, setArrayNotes] = useState([]);
   const [noteKey, setNoteKey] = useState();
   const [currentLatency, setCurrentLatency] = useState();
+  const [isAvailable, setIsAvailable] = useState(true);
 
   const addNoteHandler = enteredNote => {
     setArrayNotes((prevNote) => {
@@ -32,6 +33,23 @@ function App() {
     })
   }
 
+
+  useEffect(() => {
+    function handleResize() {
+      if(window.innerWidth < 879) 
+        setIsAvailable(false)
+      else
+        setIsAvailable(true)
+    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <NotesContext.Provider value={{
       notes: arrayNotes, 
@@ -43,13 +61,17 @@ function App() {
           <header className="header">
             <p>Notes generator</p>
           </header>
-          <MetronomeProvider>
+          { isAvailable ? 
+            <MetronomeProvider>
             <GenericSettings onSetKey={setKeyHandler}/>
             <div className='generator-elements'>
               <NotesWrapper onCurrentLatency={currentLatencyHandler} />
               <SettingsWrapper onAddNote={addNoteHandler} />     
             </div>  
-          </MetronomeProvider>
+          </MetronomeProvider> : 
+          <p style={{paddingTop: 70, marginInline: 'auto'}}>You cannot use this app in this resolution :(</p>
+          }
+          
       </div>
     </NotesContext.Provider>
   )
