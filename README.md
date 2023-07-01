@@ -26,3 +26,6 @@ Install modules
 Start app
 > npm start
 
+
+You can also view website on https://kamilsajdera.github.io/Notes-Generator/
+
