@@ -1,3 +1,4 @@
+import React from 'react';
 import FormRate from './FormRate';
 import './GenericSettings.css';
 
@@ -30,4 +31,4 @@ const GenericSettings = props => {
     )
 }
 
-export default GenericSettings;
+export default React.memo(GenericSettings);

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useContext } from 'react'
+import React, { useRef, useEffect, useState, useContext } from 'react'
 
 import NotesContext from '../store/notes-context';
 import { MetronomeContext } from '../store/metronome-context';
@@ -34,6 +34,7 @@ const playSound = notes => {
 };
 
 const FormRate = () => {
+    
     const { notes } = useContext(NotesContext);
     const metronomeContext = useContext(MetronomeContext)
 
@@ -162,7 +163,6 @@ const FormRate = () => {
             clearTimeout(playSound2TimeoutIdRef.current);
         };
     }, [bpm, isPlaying, notes]);
-
     
     return (
         <form className='settings-rate' onSubmit={startMetronomeHandler}>
@@ -175,4 +175,4 @@ const FormRate = () => {
     );
 };
 
-export default FormRate;
+export default React.memo(FormRate);

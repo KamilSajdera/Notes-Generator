@@ -5,19 +5,19 @@ import './NoteKeyWrapper.css';
 
 const NoteKeyWrapper = () => {
   const [keyElements, setKeyElements] = useState([]);
-  const note = useContext(NotesContext).notesKey;
+  const { notesKey } = useContext(NotesContext)
 
   useEffect(() => {
     const handleNotesKey = () => {
-      if (note) {
+      if (notesKey) {
         const elements = [];
 
-        if(note.id <= 3) {
-            for (let i = 0; i < note.accidental; i++) 
+        if(notesKey.id <= 3) {
+            for (let i = 0; i < notesKey.accidental; i++) 
                 elements.push(<div className="sharp" key={i}>#</div>);
         }
         else {
-            for (let i = 0; i < note.accidental-3; i++) 
+            for (let i = 0; i < notesKey.accidental-3; i++) 
                 elements.push(<div className="bemol" key={i}>b</div>);
         }
         setKeyElements(elements);
@@ -25,7 +25,7 @@ const NoteKeyWrapper = () => {
     };
 
     handleNotesKey();
-  }, [note]);
+  }, [notesKey]);
 
   return (
     <div className="note-key-wrapper">

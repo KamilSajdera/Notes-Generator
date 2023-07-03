@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import './NotesWrapper.css'
@@ -7,10 +7,9 @@ import NotesContext from '../store/notes-context';
 import printer from  '../img/printer.png'
  
 const NotesWrapper = props => {
-
-  const notesContext = useContext(NotesContext)
-  const arrayNotes = notesContext.notes;
+  const { notes } = useContext(NotesContext);
   const latencyLimit = 32;
+  let currentLatency = 0;
 
   const componentRef = React.useRef();
 
@@ -20,12 +19,11 @@ const NotesWrapper = props => {
   });
 
   const renderNotesStaffs = () => {
-    let currentLatency = 0;
     let currentNotes = [];
     const notesStaffs = [];
 
-    for (let i = 0; i < arrayNotes.length; i++) {
-      const note = arrayNotes[i];
+    for (let i = 0; i < notes.length; i++) {
+      const note = notes[i];
 
       if (currentLatency + note.latency > latencyLimit) {
         notesStaffs.push(
@@ -37,19 +35,24 @@ const NotesWrapper = props => {
 
       currentNotes.push(note);
       currentLatency += note.latency
-      props.onCurrentLatency(currentLatency);
     }
 
-  
-    // Dodaj ostatni NotesStaff, jeśli istnieją nuty
     if (currentNotes.length > 0) {
       notesStaffs.push(
-        <NotesStaff key={arrayNotes.length} notes={currentNotes}/>
+        <NotesStaff key={notes.length} notes={currentNotes}/>
       );
     }
 
     return notesStaffs;
   };
+
+  useEffect(() => {
+    let timerId = setTimeout(() => {
+      props.onCurrentLatency(currentLatency)
+    }, 0);
+
+    return () => clearTimeout(timerId)
+  }, [currentLatency, props])
 
   return (
     <React.Fragment>

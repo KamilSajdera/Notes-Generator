@@ -1,3 +1,4 @@
+import React from 'react'
 import Note from './Note';
 
 import './DrawNotes.css';
@@ -64,4 +65,8 @@ const DrawNotes = (props) => {
   );
 };
 
-export default DrawNotes;
+const areNotesEqual = (prevProps, nextProps) => {
+  return prevProps.notes.length === nextProps.notes.length;
+};
+
+export default React.memo(DrawNotes, areNotesEqual);

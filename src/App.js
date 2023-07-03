@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import NotesWrapper from "./components/NotesWrapper";
 import SettingsWrapper from './components/SettingsWrapper';
@@ -22,7 +22,7 @@ function App() {
      })
   }
 
-  const setKeyHandler = key => setNoteKey(key);
+  const setKeyHandler = useCallback((key) => {setNoteKey(key)}, []) 
   const currentLatencyHandler = value => setCurrentLatency(value);
 
   const removeNoteHandler = () => {
