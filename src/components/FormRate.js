@@ -1,42 +1,18 @@
 import React, { useRef, useEffect, useState, useContext } from 'react'
+import useMetronome from '../hooks/use-metronome';
 
 import NotesContext from '../store/notes-context';
 import { MetronomeContext } from '../store/metronome-context';
 import './FormRate.css';
 
-let clicks = 4;
 let currentNote = 0;
-
-const playSound = notes => {
-    
-    if(currentNote > notes.length)
-        return;
-
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  
-    const oscillator = audioContext.createOscillator();
-    oscillator.type = 'triangle';
-
-    if(clicks===4) {
-        oscillator.frequency.setValueAtTime(480, audioContext.currentTime);
-        clicks=0;
-    }    
-    else
-        oscillator.frequency.setValueAtTime(440, audioContext.currentTime); 
-
-    const output = audioContext.destination;
-    oscillator.connect(output);
-  
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.1);
-
-    clicks++;
-};
 
 const FormRate = () => {
     
     const { notes } = useContext(NotesContext);
+
     const metronomeContext = useContext(MetronomeContext)
+    const metronomeCallback = useMetronome();
 
     const [bpm, setBpm] = useState();
     const enteredBpm = useRef(0);
@@ -46,7 +22,6 @@ const FormRate = () => {
 
     const startMetronomeHandler = event => {
         event.preventDefault();
-        clicks = 4;
 
         if (enteredBpm.current.value === '') return;
 
@@ -58,29 +33,14 @@ const FormRate = () => {
         } else {
             setIsPlaying(false);
             metronomeContext.onPlayMetronome(false)
-            if (playSound2TimeoutIdRef.current) {
+            if (playSound2TimeoutIdRef.current) 
                 clearTimeout(playSound2TimeoutIdRef.current);
-            }
         }
     };
 
-    const playSound2 = () => {
+    const playSound = () => {
         if (!isPlaying) return;
-
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const output = audioContext.destination;
-
-        const playNote = (frequency, duration) => {
-            const oscillator = audioContext.createOscillator();
-            oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-            oscillator.connect(output);
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + duration - 0.1);
-
-            metronomeContext.onChangeNote(currentNote)
-        };
-
+        
         const playNextNote = () => {
             if (currentNote < notes.length) {
                 const note = notes[currentNote];
@@ -95,44 +55,44 @@ const FormRate = () => {
                 const duration = intervalNote / 1000;
                 let frequency = 0;
 
-                if (notes[currentNote].pitch === 'pitch-C') frequency = 261;
-                else if (notes[currentNote].pitch === 'pitch-Cis') frequency = 277;
-                else if (notes[currentNote].pitch === 'pitch-D') frequency = 294;
-                else if (notes[currentNote].pitch === 'pitch-Es') frequency = 311;
-                else if (notes[currentNote].pitch === 'pitch-E') frequency = 330;
-                else if (notes[currentNote].pitch === 'pitch-F') frequency = 350;
-                else if (notes[currentNote].pitch === 'pitch-Fis') frequency = 370;
-                else if (notes[currentNote].pitch === 'pitch-G') frequency = 392;
-                else if (notes[currentNote].pitch === 'pitch-Gis') frequency = 415;
-                else if (notes[currentNote].pitch === 'pitch-A') frequency = 440;
-                else if (notes[currentNote].pitch === 'pitch-B') frequency = 466;
-                else if (notes[currentNote].pitch === 'pitch-H') frequency = 494;
-                else if (notes[currentNote].pitch === 'pitch-C2') frequency = 523;
-                else if (notes[currentNote].pitch === 'pitch-Cis2') frequency = 554;
-                else if (notes[currentNote].pitch === 'pitch-D2') frequency = 587;
-                else if (notes[currentNote].pitch === 'pitch-Es2') frequency = 622;
-                else if (notes[currentNote].pitch === 'pitch-E2') frequency = 659;
-                else if (notes[currentNote].pitch === 'pitch-F2') frequency = 698;
-                else if (notes[currentNote].pitch === 'pitch-Fis2') frequency = 740;
-                else if (notes[currentNote].pitch === 'pitch-G2') frequency = 784;
-                else if (notes[currentNote].pitch === 'pitch-Gis2') frequency = 830;
-                else if (notes[currentNote].pitch === 'pitch-A2') frequency = 880;
-                else if (notes[currentNote].pitch === 'pitch-B2') frequency = 932;
-                else if (notes[currentNote].pitch === 'pitch-H2') frequency = 988;
-                else if (notes[currentNote].pitch === 'pitch-C3') frequency = 1046;
-                else if (notes[currentNote].pitch === 'pitch-Cis3') frequency = 1108;
+                if (note.pitch === 'pitch-C') frequency = 261;
+                else if (note.pitch === 'pitch-Cis') frequency = 277;
+                else if (note.pitch === 'pitch-D') frequency = 294;
+                else if (note.pitch === 'pitch-Es') frequency = 311;
+                else if (note.pitch === 'pitch-E') frequency = 330;
+                else if (note.pitch === 'pitch-F') frequency = 350;
+                else if (note.pitch === 'pitch-Fis') frequency = 370;
+                else if (note.pitch === 'pitch-G') frequency = 392;
+                else if (note.pitch === 'pitch-Gis') frequency = 415;
+                else if (note.pitch === 'pitch-A') frequency = 440;
+                else if (note.pitch === 'pitch-B') frequency = 466;
+                else if (note.pitch === 'pitch-H') frequency = 494;
+                else if (note.pitch === 'pitch-C2') frequency = 523;
+                else if (note.pitch === 'pitch-Cis2') frequency = 554;
+                else if (note.pitch === 'pitch-D2') frequency = 587;
+                else if (note.pitch === 'pitch-Es2') frequency = 622;
+                else if (note.pitch === 'pitch-E2') frequency = 659;
+                else if (note.pitch === 'pitch-F2') frequency = 698;
+                else if (note.pitch === 'pitch-Fis2') frequency = 740;
+                else if (note.pitch === 'pitch-G2') frequency = 784;
+                else if (note.pitch === 'pitch-Gis2') frequency = 830;
+                else if (note.pitch === 'pitch-A2') frequency = 880;
+                else if (note.pitch === 'pitch-B2') frequency = 932;
+                else if (note.pitch === 'pitch-H2') frequency = 988;
+                else if (note.pitch === 'pitch-C3') frequency = 1046;
+                else if (note.pitch === 'pitch-Cis3') frequency = 1108;
                 else frequency = 0;
 
-                if(notes[currentNote].type === 'rest')
+                if(note.type === 'rest')
                     frequency = 20000; // human can hear to 20kHz
 
-                playNote(frequency, duration);
+                metronomeCallback.playSound(frequency, duration)
+                metronomeContext.onChangeNote(currentNote)
 
                 currentNote++;
                 playSound2TimeoutIdRef.current = setTimeout(playNextNote, intervalNote);
             }
         };
-
         playNextNote();
     };
 
@@ -144,7 +104,8 @@ const FormRate = () => {
             const intervalMetronome = (60 / bpm) * 1000;
 
             timerId = setInterval(() => {
-                if (currentNote < notes.length) playSound(notes);
+                if (currentNote < notes.length) 
+                    metronomeCallback.playMetronome();
                 else {
                     setIsPlaying(false);
                     metronomeContext.onPlayMetronome(false)
@@ -153,7 +114,7 @@ const FormRate = () => {
             }, intervalMetronome);
 
             timer = setTimeout(() => {
-                if (isPlaying) playSound2();
+                if (isPlaying) playSound();
             }, intervalMetronome);
         }
 
@@ -162,7 +123,7 @@ const FormRate = () => {
             clearTimeout(timer);
             clearTimeout(playSound2TimeoutIdRef.current);
         };
-    }, [bpm, isPlaying, notes]);
+    }, [bpm, isPlaying, notes]); // ignore missing dependencies
     
     return (
         <form className='settings-rate' onSubmit={startMetronomeHandler}>
