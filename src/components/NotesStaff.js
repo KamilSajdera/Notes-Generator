@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './NotesStaff.css';
-import clef from '../img/key.webp';
+import clef from '../assets/img/key.webp';
 import DrawNotes from './DrawNotes';
 import NoteKeyWrapper from './NoteKeyWrapper';
 

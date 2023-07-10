@@ -32,25 +32,25 @@
 
 .n16
 {
-    background: url('../img/whole-note.png');
+    background: url('../assets/img/whole-note.png');
     width: 25px;
 }   
 
 .n8
 {
-    background: url('../img/minim.png');
+    background: url('../assets/img/minim.png');
     margin-inline: 10%;
 }
 
 .n4
 {
-    background: url('../img/crotchet.png');
+    background: url('../assets/img/crotchet.png');
     margin-inline: 5%;
 }
 
 .n2
 {
-    background: url('../img/quaver.png');
+    background: url('../assets/img/quaver.png');
     width: 35px;
 
     @media (max-width: 1224px) {
@@ -58,3 +58,23 @@
     }
 }
 
+
+.arc {
+    background: url(../assets/img/crotchet.png);
+}
+
+.arc::after {
+    
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: -11px;
+}
+
+.arc:first-child::after {
+    width: 0;
+}

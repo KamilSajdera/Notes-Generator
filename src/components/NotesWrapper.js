@@ -4,7 +4,7 @@ import { useReactToPrint } from 'react-to-print';
 import './NotesWrapper.css'
 import NotesStaff from './NotesStaff';
 import NotesContext from '../store/notes-context';
-import printer from  '../img/printer.png'
+import printer from  '../assets/img/printer.png'
  
 const NotesWrapper = props => {
   const { notes } = useContext(NotesContext);

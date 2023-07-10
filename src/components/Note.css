@@ -66,7 +66,7 @@
 .pitch-Cis2::before,
 .pitch-Cis3::before {
     content: '';
-    background: url('../img/sharp.png');
+    background: url('../assets/img/sharp.png');
     width: 21px;
     height: 19px;
     display: block;
@@ -106,7 +106,7 @@
 .pitch-Fis::before,
 .pitch-Fis2::before {
     content: '';
-    background: url('../img/sharp.png');
+    background: url('../assets/img/sharp.png');
     width: 21px;
     height: 19px;
     display: block;
@@ -146,7 +146,7 @@
 .pitch-Gis::before,
 .pitch-Gis2::before {
     content: '';
-    background: url('../img/sharp.png');
+    background: url('../assets/img/sharp.png');
     width: 21px;
     height: 19px;
     display: block;
@@ -181,7 +181,7 @@
 
 .rn16 
 {
-    background: url('../img/semibreve-pause.png');
+    background: url('../assets/img/semibreve-pause.png');
     top: -18px;
     width: 35px;
     left: 50%;
@@ -190,7 +190,7 @@
 
 .rn8 
 {
-    background: url('../img/semibreve-pause.png');
+    background: url('../assets/img/semibreve-pause.png');
     top: -12px;
     width: 35px;
     margin-inline: 10%;
@@ -198,7 +198,7 @@
 
 .rn4 
 {
-    background: url('../img/crotchet-pause.png');
+    background: url('../assets/img/crotchet-pause.png');
     width: 35px;
     margin-inline: 5%;
     top: 6px;
@@ -206,7 +206,7 @@
 
 .rn2 
 {
-    background: url('../img/quaver-pause.png');
+    background: url('../assets/img/quaver-pause.png');
     width: 20px;
     margin-inline: 5%;
     top: -1px;
