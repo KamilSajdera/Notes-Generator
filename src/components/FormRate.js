@@ -49,46 +49,14 @@ const FormRate = () => {
                 if (note.latency === 16) delay = 4;
                 else if (note.latency === 8) delay = 2;
                 else if (note.latency === 4) delay = 1;
-                else delay = 0.5;
+                else delay = 0.49;
 
-                const intervalNote = (60 / bpm) * 1000 * delay;
-                const duration = intervalNote / 1000;
-                let frequency = 0;
+                const intervalNote = (60 / bpm) * 999 * delay;
+                
+                if(note.type === 'sound')
+                    metronomeCallback.playSound(note.pitch.replace('-', ''))
 
-                if (note.pitch === 'pitch-C') frequency = 261;
-                else if (note.pitch === 'pitch-Cis') frequency = 277;
-                else if (note.pitch === 'pitch-D') frequency = 294;
-                else if (note.pitch === 'pitch-Es') frequency = 311;
-                else if (note.pitch === 'pitch-E') frequency = 330;
-                else if (note.pitch === 'pitch-F') frequency = 350;
-                else if (note.pitch === 'pitch-Fis') frequency = 370;
-                else if (note.pitch === 'pitch-G') frequency = 392;
-                else if (note.pitch === 'pitch-Gis') frequency = 415;
-                else if (note.pitch === 'pitch-A') frequency = 440;
-                else if (note.pitch === 'pitch-B') frequency = 466;
-                else if (note.pitch === 'pitch-H') frequency = 494;
-                else if (note.pitch === 'pitch-C2') frequency = 523;
-                else if (note.pitch === 'pitch-Cis2') frequency = 554;
-                else if (note.pitch === 'pitch-D2') frequency = 587;
-                else if (note.pitch === 'pitch-Es2') frequency = 622;
-                else if (note.pitch === 'pitch-E2') frequency = 659;
-                else if (note.pitch === 'pitch-F2') frequency = 698;
-                else if (note.pitch === 'pitch-Fis2') frequency = 740;
-                else if (note.pitch === 'pitch-G2') frequency = 784;
-                else if (note.pitch === 'pitch-Gis2') frequency = 830;
-                else if (note.pitch === 'pitch-A2') frequency = 880;
-                else if (note.pitch === 'pitch-B2') frequency = 932;
-                else if (note.pitch === 'pitch-H2') frequency = 988;
-                else if (note.pitch === 'pitch-C3') frequency = 1046;
-                else if (note.pitch === 'pitch-Cis3') frequency = 1108;
-                else frequency = 0;
-
-                if(note.type === 'rest')
-                    frequency = 20000; // human can hear to 20kHz
-
-                metronomeCallback.playSound(frequency, duration)
                 metronomeContext.onChangeNote(currentNote)
-
                 currentNote++;
                 playSound2TimeoutIdRef.current = setTimeout(playNextNote, intervalNote);
             }
