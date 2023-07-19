@@ -13,7 +13,7 @@ Write your melodic line and mould every note as you want. Thanks to this app, yo
 ### [TO BE IMPLEMENTED]
 - writing notes using keyboard shortcuts,
 - displaying quavers under one arc,
-- better styling/displaying options selection menu in pitch and value,
+- <s> better styling/displaying options selection menu in pitch and value </s> ✅
 
 ## Project Setup
 
