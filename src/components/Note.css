@@ -1,227 +1,266 @@
-.note 
-{
-    width: 25px;
-    height: 40px;
-    background-position: bottom!important;
-    background-size: contain!important;
-    background-repeat: no-repeat!important;
-    position: relative;
+.note {
+  width: 25px;
+  height: 40px;
+  background-position: bottom !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  position: relative;
 }
 
-.pitch-C, .pitch-Cis { bottom: -31px; }
-.pitch-D { bottom: -21px; }
-.pitch-E, .pitch-Es { bottom: -16px; }
-.pitch-F, .pitch-Fis { bottom: -10px; }
-.pitch-G, .pitch-Gis { bottom: -3px; }
-.pitch-A { bottom: 2px; }
-.pitch-H, .pitch-B { bottom: 9px; }
-.pitch-C2, .pitch-Cis2 { bottom: 14px; }
-.pitch-D2 { bottom: -8px; transform: rotate(180deg); }
-.pitch-E2, .pitch-Es2 { bottom: -2px; transform: rotate(180deg); }
-.pitch-F2, .pitch-Fis2 { bottom: 5px; transform: rotate(180deg); }
-.pitch-G2, .pitch-Gis2 { bottom: 10px; transform: rotate(180deg); }
-.pitch-A2 { bottom: 15px; transform: rotate(180deg); }
-.pitch-H2, .pitch-B2 { bottom: 21px; transform: rotate(180deg); }
-.pitch-C3, .pitch-Cis3 { bottom: 26px; transform: rotate(180deg); }
-
+.pitch-C,
+.pitch-Cis {
+  bottom: -31px;
+}
+.pitch-D {
+  bottom: -21px;
+}
+.pitch-E,
+.pitch-Es {
+  bottom: -16px;
+}
+.pitch-F,
+.pitch-Fis {
+  bottom: -10px;
+}
+.pitch-G,
+.pitch-Gis {
+  bottom: -3px;
+}
+.pitch-A {
+  bottom: 2px;
+}
+.pitch-H,
+.pitch-b {
+  bottom: 9px;
+}
+.pitch-C2,
+.pitch-Cis2 {
+  bottom: 14px;
+}
+.pitch-D2 {
+  bottom: -8px;
+  transform: rotate(180deg);
+}
+.pitch-E2,
+.pitch-Es2 {
+  bottom: -2px;
+  transform: rotate(180deg);
+}
+.pitch-F2,
+.pitch-Fis2 {
+  bottom: 5px;
+  transform: rotate(180deg);
+}
+.pitch-G2,
+.pitch-Gis2 {
+  bottom: 10px;
+  transform: rotate(180deg);
+}
+.pitch-A2 {
+  bottom: 15px;
+  transform: rotate(180deg);
+}
+.pitch-H2,
+.pitch-b2 {
+  bottom: 21px;
+  transform: rotate(180deg);
+}
+.pitch-C3,
+.pitch-Cis3 {
+  bottom: 26px;
+  transform: rotate(180deg);
+}
 
 .pitch-C::after,
 .pitch-A2::after,
 .pitch-C3::after,
 .pitch-Cis3::after {
-    content: '';
-    width: 24px;
-    height: 0.01em;
-    display: inline-block;
-    background: #000;
-    position: absolute;
-    bottom: 5px;
-    left: 0px;
+  content: "";
+  width: 24px;
+  height: 0.01em;
+  display: inline-block;
+  background: #000;
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
 }
 
 .pitch-H2::after,
-.pitch-B2::after {
-    content: '';
-    width: 24px;
-    height: 0.01em;
-    display: inline-block;
-    background: #000;
-    position: absolute;
-    bottom: 11px;
-    left: 0px;
+.pitch-b2::after {
+  content: "";
+  width: 24px;
+  height: 0.01em;
+  display: inline-block;
+  background: #000;
+  position: absolute;
+  bottom: 11px;
+  left: 0px;
 }
 
 .pitch-C3::before {
-    content: '';
-    width: 24px;
-    height: 0.01em;
-    display: inline-block;
-    background: #000;
-    position: absolute;
-    bottom: 16px;
-    left: 0px;
+  content: "";
+  width: 24px;
+  height: 0.01em;
+  display: inline-block;
+  background: #000;
+  position: absolute;
+  bottom: 16px;
+  left: 0px;
 }
 
 .pitch-Cis::before,
 .pitch-Cis2::before,
 .pitch-Cis3::before {
-    content: '';
-    background: url('../assets/img/sharp.png');
-    width: 21px;
-    height: 19px;
-    display: block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    bottom: -4px;
-    left: -13px;
+  content: "";
+  background: url("../assets/img/sharp.png");
+  width: 21px;
+  height: 19px;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: -4px;
+  left: -13px;
 }
 
 .pitch-Cis3::before {
-    transform: rotate(180deg);
-    bottom: -3px;
-    left: 22px;
+  transform: rotate(180deg);
+  bottom: -3px;
+  left: 22px;
 }
 
 .pitch-Es::before,
 .pitch-Es2::before {
-    content: 'b';
-    font-size: 1.3rem;
-    font-weight: 600;
-    display: block;
-    font-family: 'Shadows Into Light', cursive;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    bottom: -9px;
-    left: -7px;
+  content: "b";
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: block;
+  font-family: "Shadows Into Light", cursive;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: -9px;
+  left: -7px;
 }
 
 .pitch-Es2::before {
-    transform: rotate(180deg);
-    bottom: -13px;
-    left: 23px;
+  transform: rotate(180deg);
+  bottom: -13px;
+  left: 23px;
 }
 
 .pitch-Fis::before,
 .pitch-Fis2::before {
-    content: '';
-    background: url('../assets/img/sharp.png');
-    width: 21px;
-    height: 19px;
-    display: block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    bottom: -4px;
-    left: -13px;
+  content: "";
+  background: url("../assets/img/sharp.png");
+  width: 21px;
+  height: 19px;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: -4px;
+  left: -13px;
 }
 
 .pitch-Fis2::before {
-    transform: rotate(180deg);
-    bottom: -3px;
-    left: 18px;
+  transform: rotate(180deg);
+  bottom: -3px;
+  left: 18px;
 }
 
-.pitch-B::before,
-.pitch-B2::before {
-    content: 'b';
-    font-size: 1.3rem;
-    font-weight: 600;
-    display: block;
-    font-family: 'Shadows Into Light', cursive;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    bottom: -9px;
-    left: -7px;
+.pitch-b::before,
+.pitch-b2::before {
+  content: "b";
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: block;
+  font-family: "Shadows Into Light", cursive;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: -9px;
+  left: -7px;
 }
 
-.pitch-B2::before {
-    transform: rotate(180deg);
-    bottom: -13px;
-    left: 23px;
+.pitch-b2::before {
+  transform: rotate(180deg);
+  bottom: -13px;
+  left: 23px;
 }
 
 .pitch-Gis::before,
 .pitch-Gis2::before {
-    content: '';
-    background: url('../assets/img/sharp.png');
-    width: 21px;
-    height: 19px;
-    display: block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    bottom: -4px;
-    left: -13px;
+  content: "";
+  background: url("../assets/img/sharp.png");
+  width: 21px;
+  height: 19px;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: -4px;
+  left: -13px;
 }
 
 .pitch-Gis2::before {
-    transform: rotate(180deg);
-    bottom: -3px;
-    left: 18px;
+  transform: rotate(180deg);
+  bottom: -3px;
+  left: 18px;
 }
 
-.tact-bar 
-{
-    border-left: 1px solid #000;
+.tact-bar {
+  border-left: 1px solid #000;
 }
 
-
-.rest 
-{
-    width: 25px;
-    height: 40px;
-    background-position: bottom!important;
-    background-size: contain!important;
-    background-repeat: no-repeat!important;
-    position: relative;
+.rest {
+  width: 25px;
+  height: 40px;
+  background-position: bottom !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  position: relative;
 }
 
-.rn16 
-{
-    background: url('../assets/img/semibreve-pause.png');
-    top: -18px;
-    width: 35px;
-    left: 50%;
-    transform: translate(-50%, 0);
+.rn16 {
+  background: url("../assets/img/semibreve-pause.png");
+  top: -18px;
+  width: 35px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
-.rn8 
-{
-    background: url('../assets/img/semibreve-pause.png');
-    top: -12px;
-    width: 35px;
-    margin-inline: 10%;
+.rn8 {
+  background: url("../assets/img/semibreve-pause.png");
+  top: -12px;
+  width: 35px;
+  margin-inline: 10%;
 }
 
-.rn4 
-{
-    background: url('../assets/img/crotchet-pause.png');
-    width: 35px;
-    margin-inline: 5%;
-    top: 6px;
+.rn4 {
+  background: url("../assets/img/crotchet-pause.png");
+  width: 35px;
+  margin-inline: 5%;
+  top: 6px;
 }
 
-.rn2 
-{
-    background: url('../assets/img/quaver-pause.png');
-    width: 20px;
-    margin-inline: 5%;
-    top: -1px;
+.rn2 {
+  background: url("../assets/img/quaver-pause.png");
+  width: 20px;
+  margin-inline: 5%;
+  top: -1px;
 }
 
 .active-note::after {
-    content: '';
-    display: block;
-    width: 100%;
-    max-width: 25px;
-    height: 3px;
-    position: absolute;
-    bottom: -8px;   
-    background: #ff521c;
-    -webkit-box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
-    -moz-box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
-    box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
+  content: "";
+  display: block;
+  width: 100%;
+  max-width: 25px;
+  height: 3px;
+  position: absolute;
+  bottom: -8px;
+  background: #ff521c;
+  -webkit-box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
+  -moz-box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
+  box-shadow: 0 -8px 23px 3px rgba(255, 82, 28, 1);
 }
