@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Notes-Generator/static/css/main.c248f258.css",
-    "main.js": "/Notes-Generator/static/js/main.ac755807.js",
+    "main.css": "/Notes-Generator/static/css/main.11ac7f13.css",
+    "main.js": "/Notes-Generator/static/js/main.798398d1.js",
     "static/js/787.db8206b7.chunk.js": "/Notes-Generator/static/js/787.db8206b7.chunk.js",
     "static/media/quaver-pause.png": "/Notes-Generator/static/media/quaver-pause.0b7be14565cfbba8d0ec.png",
     "static/media/sharp.png": "/Notes-Generator/static/media/sharp.d13e2923ea7b59bf7e60.png",
@@ -41,12 +41,12 @@
     "static/media/metronomeClickon1.mp3": "/Notes-Generator/static/media/metronomeClickon1.866d6106eb3c32918b69.mp3",
     "static/media/metronomeClick.mp3": "/Notes-Generator/static/media/metronomeClick.5dd3e52420d0c9f9689b.mp3",
     "index.html": "/Notes-Generator/index.html",
-    "main.c248f258.css.map": "/Notes-Generator/static/css/main.c248f258.css.map",
-    "main.ac755807.js.map": "/Notes-Generator/static/js/main.ac755807.js.map",
+    "main.11ac7f13.css.map": "/Notes-Generator/static/css/main.11ac7f13.css.map",
+    "main.798398d1.js.map": "/Notes-Generator/static/js/main.798398d1.js.map",
     "787.db8206b7.chunk.js.map": "/Notes-Generator/static/js/787.db8206b7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c248f258.css",
-    "static/js/main.ac755807.js"
+    "static/css/main.11ac7f13.css",
+    "static/js/main.798398d1.js"
   ]
 }
