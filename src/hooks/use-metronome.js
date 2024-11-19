@@ -31,82 +31,77 @@ import pitchH2 from "../assets/sound/pitch-H2.mp3";
 import pitchC3 from "../assets/sound/pitch-C3.mp3";
 import pitchCis3 from "../assets/sound/pitch-Cis3.mp3";
 
-const soundMap = {
-  pitchC,
-  pitchCis,
-  pitchD,
-  pitchEs,
-  pitchE,
-  pitchF,
-  pitchFis,
-  pitchG,
-  pitchGis,
-  pitchA,
-  pitchb,
-  pitchH,
-  pitchC2,
-  pitchCis2,
-  pitchD2,
-  pitchEs2,
-  pitchE2,
-  pitchF2,
-  pitchFis2,
-  pitchG2,
-  pitchGis2,
-  pitchA2,
-  pitchb2,
-  pitchH2,
-  pitchC3,
-  pitchCis3,
+const preloadedSounds = {
+  metronomeClick: new Audio(metronomeClick),
+  metronomeClick2: new Audio(metronomeClick2),
+  pitchC: new Audio(pitchC),
+  pitchCis: new Audio(pitchCis),
+  pitchD: new Audio(pitchD),
+  pitchEs: new Audio(pitchEs),
+  pitchE: new Audio(pitchE),
+  pitchF: new Audio(pitchF),
+  pitchFis: new Audio(pitchFis),
+  pitchG: new Audio(pitchG),
+  pitchGis: new Audio(pitchGis),
+  pitchA: new Audio(pitchA),
+  pitchb: new Audio(pitchb),
+  pitchH: new Audio(pitchH),
+  pitchC2: new Audio(pitchC2),
+  pitchCis2: new Audio(pitchCis2),
+  pitchD2: new Audio(pitchD2),
+  pitchEs2: new Audio(pitchEs2),
+  pitchE2: new Audio(pitchE2),
+  pitchF2: new Audio(pitchF2),
+  pitchFis2: new Audio(pitchFis2),
+  pitchG2: new Audio(pitchG2),
+  pitchGis2: new Audio(pitchGis2),
+  pitchA2: new Audio(pitchA2),
+  pitchb2: new Audio(pitchb2),
+  pitchH2: new Audio(pitchH2),
+  pitchC3: new Audio(pitchC3),
+  pitchCis3: new Audio(pitchCis3),
 };
 
 const accidentalMappings = {
   1: { pitchF: "pitchFis", pitchF2: "pitchFis2" },
   2: { pitchC: "pitchCis", pitchC2: "pitchCis2", pitchC3: "pitchCis3" },
   3: { pitchG: "pitchGis", pitchG2: "pitchGis2" },
-  4: { pitchH: "pitchb", pitchH2: "pitchb2"},
-  5: { pitchE: "pitchEs", pitchE2: "pitchEs2"},
-  6: { pitchA: "pitchGis", pitchA2: "pitchGis2"}
+  4: { pitchH: "pitchb", pitchH2: "pitchb2" },
+  5: { pitchE: "pitchEs", pitchE2: "pitchEs2" },
+  6: { pitchA: "pitchGis", pitchA2: "pitchGis2" }
 };
 accidentalMappings[2] = { ...accidentalMappings[2], ...accidentalMappings[1] };
-accidentalMappings[3] = { ...accidentalMappings[3], ...accidentalMappings[2]};
-accidentalMappings[5] = { ...accidentalMappings[5], ...accidentalMappings[4]}
-accidentalMappings[6] = { ...accidentalMappings[6], ...accidentalMappings[5]}
+accidentalMappings[3] = { ...accidentalMappings[3], ...accidentalMappings[2] };
+accidentalMappings[5] = { ...accidentalMappings[5], ...accidentalMappings[4] };
+accidentalMappings[6] = { ...accidentalMappings[6], ...accidentalMappings[5] };
 
 const useMetronome = () => {
-  console.log(accidentalMappings[2])
   const { notesKey } = useContext(NotesContext);
   let clicks = 0;
-  let audioNote = null;
 
   function playMetronome() {
     if (clicks++ === 4) clicks = 1;
 
-    const clickSound = new Audio(metronomeClick);
-    const clickSound2 = new Audio(metronomeClick2);
+    const clickSound = preloadedSounds.metronomeClick;
+    const clickSound2 = preloadedSounds.metronomeClick2;
 
-    if (clicks === 1) clickSound2.play();
-    else clickSound.play();
+    if (clicks === 1) {
+      clickSound2.currentTime = 0;
+      clickSound2.play();
+    } else {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
   }
 
   function playSound(notePitch) {
+    const { accidental } = notesKey || {};
+    const accidentalPitchMap = accidentalMappings[accidental];
+    const mappedPitch = accidentalPitchMap?.[notePitch] || notePitch;
+    const audioNote = preloadedSounds[mappedPitch];
+
     if (audioNote) {
-      audioNote.pause();
-      audioNote.currentTime = 0;
-    }
-
-    let currentPlayPitch = soundMap[notePitch];
-
-    if (notesKey) {
-      const { accidental } = notesKey;
-      const accidentalPitchMap = accidentalMappings[accidental];
-      if (accidentalPitchMap && accidentalPitchMap[notePitch]) {
-        currentPlayPitch = soundMap[accidentalPitchMap[notePitch]];
-      }
-    }
-
-    if (currentPlayPitch) {
-      audioNote = new Audio(currentPlayPitch);
+      audioNote.currentTime = 0; 
       audioNote.play().catch((error) => console.error(error));
     }
   }
