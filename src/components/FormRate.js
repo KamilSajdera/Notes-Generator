@@ -46,9 +46,9 @@ const FormRate = () => {
                 const note = notes[currentNote];
                 let delay;
 
-                if (note.latency === 16) delay = 4;
-                else if (note.latency === 8) delay = 2;
-                else if (note.latency === 4) delay = 1;
+                if (note.latency === 16) delay = 3.96;
+                else if (note.latency === 8) delay = 1.98;
+                else if (note.latency === 4) delay = 0.98;
                 else delay = 0.49;
 
                 const intervalNote = (60 / bpm) * 999 * delay;
