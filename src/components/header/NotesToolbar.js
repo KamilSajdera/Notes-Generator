@@ -1,4 +1,5 @@
 import "./NotesToolbar.css";
+import SoundChoice from "./sound-choice";
 import TypeAndOctave from "./type-and-octave-form";
 
 export default function NotesToolbar() {
@@ -7,6 +8,7 @@ export default function NotesToolbar() {
       <div className="next-note-wrapper">
         <form className="form">
           <TypeAndOctave />
+          <SoundChoice />
         </form>
       </div>
       <div className="helper-functions"></div>

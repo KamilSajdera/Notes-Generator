@@ -19,10 +19,11 @@
 .form {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .toolbar-row {
-  width: 100%;
+  width: 50%;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -37,4 +38,23 @@
   display: flex;
   align-items: baseline;
   gap: 4px;
+}
+
+.pitch {
+  border: 1px solid #515f6b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  width: 40px;
+  line-height: 50%;
+  cursor: pointer;
+  margin-top: 5px;
+  font-weight: 500;
+  transition: all 150ms ease;
+}
+
+.pitch.active {
+  background-color: #7dc8fc;
+  color: #212121;
 }
