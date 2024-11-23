@@ -41,7 +41,7 @@
 }
 
 .pitch {
-  border: 1px solid #515f6b;
+  border: 1px solid #425e72;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,4 +57,33 @@
 .pitch.active {
   background-color: #7dc8fc;
   color: #212121;
+}
+
+.note-value {
+  border: 1px solid #425e72;
+  padding: 5px 15px;
+  margin-top: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 100ms ease;
+}
+
+.note-value.active {
+  background: #425e72;
+}
+
+.note-division {
+  font-size: 0.8em;
+  color: #8d8d8d;
+}
+
+.note-value.active .note-division {
+  color: #bebebe;
+}
+
+.note-value.disabled {
+  filter: brightness(0.7);
 }
