@@ -8,6 +8,7 @@ import NotesContext from "./store/notes-context";
 import { MetronomeProvider } from "./store/metronome-context";
 
 import './App.css';
+import Header from "./components/header/header";
 
 function App() {
 
@@ -58,9 +59,7 @@ function App() {
       onRemoveNote: removeNoteHandler
       }}>
       <div className='container'>
-          <header className="header">
-            <p>Notes generator</p>
-          </header>
+          <Header />
           { isAvailable ? 
             <MetronomeProvider>
             <GenericSettings onSetKey={setKeyHandler}/>

@@ -1,0 +1,40 @@
+.notes-toolbar {
+  width: 100%;
+  text-align: left;
+  margin-top: 15px;
+  border: 2px solid #2d2d2d;
+  padding: 10px 25px;
+  border-radius: 3px;
+  display: flex;
+}
+
+.next-note-wrapper {
+  width: 70%;
+}
+
+.helper-functions {
+  width: 30%;
+}
+
+.form {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.toolbar-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 10px;
+}
+
+.toolbar-row h3 {
+  width: 100%;
+}
+
+.toolbar-option {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
