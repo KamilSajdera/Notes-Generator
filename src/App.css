@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #f1f1f1;
+    background: #212121;
 }
 
 .container {
@@ -23,16 +23,6 @@ body {
     }
     
 }
-
-
-.container .header
-{
-    text-align: center;
-    font-size: 30px;
-    font-weight: 700;
-    margin-top: 50px;
-}
-
 
 .generator-elements 
 {
