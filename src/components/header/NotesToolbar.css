@@ -69,19 +69,33 @@
 }
 
 .note-value {
-  border: 1px solid #425e72;
-  padding: 5px 15px;
   margin-top: 5px;
-  border-radius: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 5px;
+  overflow: hidden;
   transition: all 100ms ease;
 }
 
-.note-value.active {
-  background: #425e72;
+.value-radio {
+  display: none;
+}
+
+.value-label {
+  border: 1px solid #425e72;
+  border-radius: 15px;
+  padding: 5px 15px;
+  cursor: pointer;
+  transition: all 100ms ease;
+  color: #fff;
+  box-shadow: inset 0px 0px 15px -11px #6faedb;
+}
+
+.value-radio:checked ~ .value-label {
+  background: #7dc8fc;
+  color: #141414;
+  border: 1px solid transparent;
 }
 
 .note-division {
@@ -89,12 +103,18 @@
   color: #8d8d8d;
 }
 
-.note-value.active .note-division {
-  color: #bebebe;
+.value-radio:checked ~ .value-label .note-division {
+  color: #494949;
 }
 
 .note-value.disabled {
-  filter: brightness(0.7);
+  filter: brightness(0.6);
+  transform: scale(0.9);
+}
+
+.note-value.disabled .value-label {
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
 .button-add-note {
