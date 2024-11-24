@@ -122,7 +122,10 @@
   transition: width 100ms ease-in-out;
 }
 
-input[type="radio"] {
+#sound,
+#rest,
+#first_octave,
+#second_octave {
   appearance: none;
   background-color: #fff;
   margin: 0;
@@ -136,7 +139,10 @@ input[type="radio"] {
   place-content: center;
 }
 
-input[type="radio"]::before {
+#sound::before,
+#rest::before,
+#first_octave::before,
+#second_octave::before {
   content: "";
   width: 0.75em;
   height: 0.75em;
@@ -146,7 +152,10 @@ input[type="radio"]::before {
   box-shadow: inset 1em 1em #6faedb;
 }
 
-input[type="radio"]:checked::before {
+#sound:checked::before,
+#rest:checked::before,
+#first_octave:checked::before,
+#second_octave:checked::before {
   transform: scale(1);
 }
 
