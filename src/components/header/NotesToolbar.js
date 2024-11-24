@@ -1,3 +1,4 @@
+import KeyOptions from "./key-options";
 import NotesValue from "./notes-value";
 import "./NotesToolbar.css";
 import SoundChoice from "./sound-choice";
@@ -16,7 +17,9 @@ export default function NotesToolbar() {
           </button>
         </form>
       </div>
-      <div className="helper-functions"></div>
+      <div className="helper-functions">
+        <KeyOptions />
+      </div>
     </section>
   );
 }
