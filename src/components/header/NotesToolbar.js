@@ -11,6 +11,9 @@ export default function NotesToolbar() {
           <TypeAndOctave />
           <SoundChoice />
           <NotesValue />
+          <button className="button-add-note" type="submit">
+            Add note
+          </button>
         </form>
       </div>
       <div className="helper-functions"></div>
