@@ -45,16 +45,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
-  width: 40px;
   line-height: 50%;
   cursor: pointer;
   margin-top: 5px;
   font-weight: 500;
+}
+
+.pitch-radio {
+  display: none;
+}
+
+.pitch-label {
+  width: 40px;
+  padding: 7px 0;
+  text-align: center;
+  cursor: pointer;
   transition: all 150ms ease;
 }
 
-.pitch.active {
+.pitch-radio:checked ~ .pitch-label {
   background-color: #7dc8fc;
   color: #212121;
 }
@@ -159,6 +168,9 @@
   transform: scale(1);
 }
 
-input[type="radio"]:checked ~ .label-for-radio::after {
+#sound:checked ~ .label-for-radio::after,
+#rest:checked ~ .label-for-radio::after,
+#first_octave:checked ~ .label-for-radio::after,
+#second_octave:checked ~ .label-for-radio::after {
   width: 100%;
 }
