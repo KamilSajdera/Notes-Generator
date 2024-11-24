@@ -7,13 +7,13 @@ export default function TypeAndOctave() {
         <h3>Type</h3>
         <div className="toolbar-option">
           <input type="radio" name="note-type" value="sound" id="sound" />
-          <label htmlFor="sound" style={{ fontSize: "20px" }}>
+          <label htmlFor="sound" className="label-for-radio">
             Note
           </label>
         </div>
         <div className="toolbar-option">
           <input type="radio" name="note-type" value="rest" id="rest" />
-          <label htmlFor="rest" style={{ fontSize: "20px" }}>
+          <label htmlFor="rest" className="label-for-radio"> 
             Rest
           </label>
         </div>
@@ -22,13 +22,13 @@ export default function TypeAndOctave() {
         <h3>Octave</h3>
         <div className="toolbar-option">
           <input type="radio" name="octave" value="1" id="first_octave" />
-          <label htmlFor="first_octave" style={{ fontSize: "20px" }}>
+          <label htmlFor="first_octave" className="label-for-radio">
             First
           </label>
         </div>
         <div className="toolbar-option">
           <input type="radio" name="octave" value="2" id="second_octave" />
-          <label htmlFor="second_octave" style={{ fontSize: "20px" }}>
+          <label htmlFor="second_octave" className="label-for-radio">
             Second
           </label>
         </div>
