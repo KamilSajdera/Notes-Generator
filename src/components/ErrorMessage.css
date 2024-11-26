@@ -1,0 +1,35 @@
+.error {
+  width: 90%;
+  position: fixed;
+  z-index: 5;
+  background: #e72d2d;
+  padding: 10px 25px;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0px 0px 14px -4px #e23d3d;
+  font-weight: 500;
+  animation-name: showError;
+  animation-duration: 200ms;
+}
+
+@media screen and (min-width: 767px) {
+  .error {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .error {
+    width: 35%;
+  }
+}
+
+@keyframes showError {
+  from {
+    top: 45px;
+  }
+  to {
+    top: 30px;
+  }
+}

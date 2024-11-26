@@ -6,6 +6,7 @@
 
 body {
     background: #212121;
+    min-height: 3000px;
 }
 
 .container {
