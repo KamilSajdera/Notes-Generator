@@ -1,0 +1,60 @@
+.metronome-form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  position: relative;
+}
+
+.metronome-form input {
+  outline: none;
+  background: #121212;
+  border: 1px solid #272727;
+  border-radius: 0.25rem;
+  padding: 0.6em 1em;
+  width: 90px;
+  -moz-appearance: textfield;
+  appearance: none;
+  color: #fff;
+  font-size: 0.95em;
+  text-align: center;
+  font-weight: 600;
+}
+
+.metronome-form input[type="number"]::-webkit-inner-spin-button,
+.metronome-form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.metronome-form label {
+  position: absolute;
+  bottom: 3px;
+  left: 60px;
+  font-size: 0.75em;
+  color: #9c9c9c;
+}
+
+.metronome-form button {
+  display: block;
+  outline: none;
+  border: none;
+  padding: 7px 0;
+  width: 65px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgb(80 186 80);
+  color: #212121;
+  transition: filter 150ms ease-in-out;
+}
+
+.metronome-form button:hover {
+  filter: brightness(1.2);
+}
+
+.playing {
+  background: #e54040!important;
+  color: #fff!important;
+}

@@ -4,6 +4,7 @@ import NotesValue from "./notes-value";
 import "./NotesToolbar.css";
 import SoundChoice from "./sound-choice";
 import TypeAndOctave from "./type-and-octave-form";
+import MetronomeForm from "./metronome-form";
 
 export default function NotesToolbar() {
   const [isSticky, setIsSticky] = useState(false);
@@ -38,6 +39,7 @@ export default function NotesToolbar() {
       </div>
       <div className="helper-functions">
         <KeyOptions />
+        <MetronomeForm />
       </div>
     </section>
   );
