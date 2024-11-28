@@ -5,6 +5,7 @@ import "./NotesToolbar.css";
 import SoundChoice from "./sound-choice";
 import TypeAndOctave from "./type-and-octave-form";
 import MetronomeForm from "./metronome-form";
+import RemoveNote from "./remove-note";
 
 export default function NotesToolbar() {
   const [isSticky, setIsSticky] = useState(false);
@@ -40,6 +41,7 @@ export default function NotesToolbar() {
       <div className="helper-functions">
         <KeyOptions />
         <MetronomeForm />
+        <RemoveNote />
       </div>
     </section>
   );

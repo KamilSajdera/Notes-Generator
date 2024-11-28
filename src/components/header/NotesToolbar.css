@@ -204,3 +204,25 @@
 #second_octave:checked ~ .label-for-radio::after {
   width: 100%;
 }
+
+.remove-last-note {
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  padding: 5px 10px;
+  background: #4c4242;
+  color: #fefefe;
+  font-weight: 600;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.remove-last-note:hover {
+  filter: brightness(1.15);
+}
+
+.not-allowed {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
