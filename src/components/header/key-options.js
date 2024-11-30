@@ -1,48 +1,55 @@
-import { useRef, useEffect } from "react";
+import { useContext, useRef, useEffect, useCallback } from "react";
 
 import "./key-options.css";
+import NotesContext from "../../store/notes-context";
 
 export default function KeyOptions() {
+  const ctx = useContext(NotesContext);
+
   const customSelectRef = useRef();
   const selectButtonRef = useRef();
   const selectedValueRef = useRef();
   const optionListRef = useRef();
 
+  const handleOptionClick = useCallback((e) => {
+    const option = e.target.closest("li");
+    if (!option) return;
+
+    selectedValueRef.current.textContent =
+      option.querySelector("label").textContent;
+    customSelectRef.current.classList.remove("active");
+    selectButtonRef.current.setAttribute("aria-expanded", "false");
+
+    const value = option.querySelector("input").value;
+    ctx.onSetKey({
+      id: value,
+      accidental: parseInt(value),
+    });
+  }, [ctx]);
+
+  const handleSelectClick = () => {
+    const customSelect = customSelectRef.current;
+    const selectButton = selectButtonRef.current;
+
+    customSelect.classList.toggle("active");
+    selectButton.setAttribute(
+      "aria-expanded",
+      selectButton.getAttribute("aria-expanded") === "true" ? "false" : "true"
+    );
+  };
+
   useEffect(() => {
     const selectButton = selectButtonRef.current;
-    const customSelect = customSelectRef.current;
-    const selectedValue = selectedValueRef.current;
     const optionList = optionListRef.current;
 
-    const handleSelectClick = () => {
-      customSelect.classList.toggle("active");
-
-      selectButton.setAttribute(
-        "aria-expanded",
-        selectButton.getAttribute("aria-expanded") === "true" ? "false" : "true"
-      );
-    };
-
     selectButton.addEventListener("click", handleSelectClick);
-
-    const options = optionList.querySelectorAll("li");
-    options.forEach((option) => {
-      const handleOptionClick = (e) => {
-        selectedValue.textContent = option.querySelector("label").textContent;
-        customSelect.classList.remove("active");
-        selectButton.setAttribute("aria-expanded", "false");
-      };
-
-      option.addEventListener("click", handleOptionClick);
-    });
+    optionList.addEventListener("click", handleOptionClick);
 
     return () => {
       selectButton.removeEventListener("click", handleSelectClick);
-      options.forEach((option) => {
-        option.removeEventListener("click", null);
-      });
+      optionList.removeEventListener("click", handleOptionClick);
     };
-  }, []);
+  }, [handleOptionClick]);
 
   return (
     <div className="custom-select" ref={customSelectRef}>
