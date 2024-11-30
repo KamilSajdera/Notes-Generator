@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from 'react';
-import { useReactToPrint } from 'react-to-print';
+import React, { useContext, useEffect } from "react";
+import { useReactToPrint } from "react-to-print";
 
-import './NotesWrapper.css'
-import NotesStaff from './NotesStaff';
-import NotesContext from '../store/notes-context';
-import printer from  '../assets/img/printer.png'
- 
-const NotesWrapper = props => {
+import "./NotesWrapper.css";
+import NotesStaff from "./NotesStaff";
+import NotesContext from "../store/notes-context";
+import printer from "../assets/img/printer.png";
+
+const NotesWrapper = ({ isSticky, onCurrentLatency }) => {
   const { notes } = useContext(NotesContext);
   const latencyLimit = 32;
   let currentLatency = 0;
@@ -15,7 +15,7 @@ const NotesWrapper = props => {
 
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
-    documentTitle: "Print your notes"
+    documentTitle: "Print your notes",
   });
 
   const renderNotesStaffs = () => {
@@ -26,21 +26,17 @@ const NotesWrapper = props => {
       const note = notes[i];
 
       if (currentLatency + note.latency > latencyLimit) {
-        notesStaffs.push(
-          <NotesStaff key={i} notes={currentNotes}/>
-        );
+        notesStaffs.push(<NotesStaff key={i} notes={currentNotes} />);
         currentNotes = [];
         currentLatency = 0;
       }
 
       currentNotes.push(note);
-      currentLatency += note.latency
+      currentLatency += note.latency;
     }
 
     if (currentNotes.length > 0) {
-      notesStaffs.push(
-        <NotesStaff key={notes.length} notes={currentNotes}/>
-      );
+      notesStaffs.push(<NotesStaff key={notes.length} notes={currentNotes} />);
     }
 
     return notesStaffs;
@@ -48,26 +44,28 @@ const NotesWrapper = props => {
 
   useEffect(() => {
     let timerId = setTimeout(() => {
-      props.onCurrentLatency(currentLatency)
+      onCurrentLatency(currentLatency);
     }, 0);
 
-    return () => clearTimeout(timerId)
-  }, [currentLatency, props])
+    return () => clearTimeout(timerId);
+  }, [currentLatency, onCurrentLatency]);
 
   return (
     <React.Fragment>
-    <div className='notes-wrapper' ref={componentRef}>
-      <header>
-        <input className='notes-title' placeholder='Enter a title here' />
-      </header>
-      <ul className='staff-items'>
-        {renderNotesStaffs()}
-      </ul>
-    </div> 
-    <button className='print' onClick={handlePrint}>
-      <img src={printer} alt='printer' />
-      Print
-    </button>
+      <div
+        className="notes-wrapper"
+        ref={componentRef}
+        style={isSticky ? { marginTop: "317px" } : {}}
+      >
+        <header>
+          <input className="notes-title" placeholder="Enter a title here" />
+        </header>
+        <ul className="staff-items">{renderNotesStaffs()}</ul>
+      </div>
+      <button className="print" onClick={handlePrint}>
+        <img src={printer} alt="printer" />
+        Print
+      </button>
     </React.Fragment>
   );
 };

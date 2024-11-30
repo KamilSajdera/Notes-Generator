@@ -11,7 +11,7 @@ import TypeAndOctave from "./type-and-octave-form";
 import MetronomeForm from "./metronome-form";
 import RemoveNote from "./remove-note";
 
-export default function NotesToolbar({ onAddNote }) {
+export default function NotesToolbar({ onAddNote, onSticky }) {
   const [isSticky, setIsSticky] = useState(false);
   const {
     register,
@@ -25,6 +25,7 @@ export default function NotesToolbar({ onAddNote }) {
 
       if (shouldBeSticky !== isSticky) {
         setIsSticky(shouldBeSticky);
+        onSticky(shouldBeSticky);
       }
     }
 
@@ -33,7 +34,7 @@ export default function NotesToolbar({ onAddNote }) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [isSticky]);
+  }, [isSticky, onSticky]);
 
   const onSubmit = (data) => {
     const noteDetails = {

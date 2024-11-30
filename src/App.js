@@ -13,6 +13,7 @@ function App() {
   const [noteKey, setNoteKey] = useState();
   const [currentLatency, setCurrentLatency] = useState();
   const [isAvailable, setIsAvailable] = useState(true);
+  const [isSticky, setIsSticky] = useState(false);
 
   const addNoteHandler = (enteredNote) => {
     setArrayNotes((prevNote) => {
@@ -61,8 +62,14 @@ function App() {
       <div className="container">
         {isAvailable ? (
           <MetronomeProvider>
-            <Header onAddNote={addNoteHandler} />
-            <NotesWrapper onCurrentLatency={currentLatencyHandler} />
+            <Header
+              onAddNote={addNoteHandler}
+              onSticky={(value) => setIsSticky(value)}
+            />
+            <NotesWrapper
+              onCurrentLatency={currentLatencyHandler}
+              isSticky={isSticky}
+            />
           </MetronomeProvider>
         ) : (
           <p style={{ paddingTop: 70, marginInline: "auto" }}>
