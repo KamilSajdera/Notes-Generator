@@ -4,7 +4,8 @@ const NotesContext = React.createContext({
     notes: [],
     notesKey: '',
     currentLatency: 0,
-    onRemoveNote: () => {}
+    onRemoveNote: () => {},
+    onSetKey: () => {}
 })
 
 export default NotesContext

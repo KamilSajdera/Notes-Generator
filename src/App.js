@@ -25,6 +25,7 @@ function App() {
   const setKeyHandler = useCallback((key) => {
     setNoteKey(key);
   }, []);
+  
   const currentLatencyHandler = (value) => setCurrentLatency(value);
 
   const removeNoteHandler = () => {
@@ -56,6 +57,7 @@ function App() {
         notesKey: noteKey,
         currentLatency: currentLatency,
         onRemoveNote: removeNoteHandler,
+        onSetKey: setKeyHandler,
       }}
     >
       <div className="container">
