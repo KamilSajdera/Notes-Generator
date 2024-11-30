@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 import NotesContext from "../../store/notes-context";
 
-export default function NotesValue() {
+export default function NotesValue({ register }) {
   const { currentLatency } = useContext(NotesContext);
   const [isDisabled, setIsDisabled] = useState(true);
   const valuesRef = useRef();
@@ -89,6 +89,7 @@ export default function NotesValue() {
             value={value.value}
             id={value.name}
             disabled={value.disabled}
+            {...register("value", { required: "Value of note is required." })}
           />
           <label htmlFor={value.name} className="value-label">
             {value.name}{" "}

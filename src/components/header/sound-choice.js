@@ -1,4 +1,4 @@
-export default function SoundChoice() {
+export default function SoundChoice({ register }) {
   const soundsArray = [
     { id: 1, name: "C", value: "C" },
     { id: 2, name: "C#", value: "Cis" },
@@ -25,6 +25,7 @@ export default function SoundChoice() {
             className="pitch-radio"
             value={`pitch-${sound.value}`}
             id={sound.name}
+            {...register("pitch", {required: "Pitch of note is required."})}
           />
           <label htmlFor={sound.name} className="pitch-label">
             <span dangerouslySetInnerHTML={{ __html: sound.name }} />
