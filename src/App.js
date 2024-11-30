@@ -16,7 +16,7 @@ function App() {
   const [currentLatency, setCurrentLatency] = useState();
   const [isAvailable, setIsAvailable] = useState(true);
 
-  const addNoteHandler = (enteredNote) => {
+  const addNoteHandler = (enteredNote) => {    
     setArrayNotes((prevNote) => {
       return [...prevNote, enteredNote];
     });
@@ -25,7 +25,7 @@ function App() {
   const setKeyHandler = useCallback((key) => {
     setNoteKey(key);
   }, []);
-  
+
   const currentLatencyHandler = (value) => setCurrentLatency(value);
 
   const removeNoteHandler = () => {
@@ -63,7 +63,7 @@ function App() {
       <div className="container">
         {isAvailable ? (
           <MetronomeProvider>
-            <Header />
+            <Header onAddNote={addNoteHandler}/>
             <GenericSettings onSetKey={setKeyHandler} />
             <div className="generator-elements">
               <NotesWrapper onCurrentLatency={currentLatencyHandler} />

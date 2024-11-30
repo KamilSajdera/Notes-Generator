@@ -11,7 +11,7 @@ import TypeAndOctave from "./type-and-octave-form";
 import MetronomeForm from "./metronome-form";
 import RemoveNote from "./remove-note";
 
-export default function NotesToolbar() {
+export default function NotesToolbar({ onAddNote }) {
   const [isSticky, setIsSticky] = useState(false);
   const {
     register,
@@ -35,7 +35,17 @@ export default function NotesToolbar() {
     };
   }, [isSticky]);
 
-  const onSubmit = (noteDetails) => {};
+  const onSubmit = (data) => {
+    const noteDetails = {
+      id: Math.random(0, 1),
+      type: data["note-type"],
+      pitch: `${data.pitch}${data.octave === "2" ? "2" : ""}`,
+      class: data.value,
+      latency: parseInt(data.value.substring(1, 3)),
+    };
+
+    onAddNote(noteDetails);
+  };
 
   const errorMessages = Object.entries(errors)
     .map(([_, error]) => error.message)

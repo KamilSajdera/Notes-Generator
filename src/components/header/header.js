@@ -1,9 +1,9 @@
 import './header.css';
 import NotesToolbar from './NotesToolbar';
 
-export default function Header() { 
+export default function Header({onAddNote}) { 
     return <header className='header'>
         <h1>Sheet Music Generator</h1>
-        <NotesToolbar />
+        <NotesToolbar onAddNote={onAddNote}/>
     </header>
 }
