@@ -31,7 +31,7 @@ import pitchH2 from "../assets/sound/pitch-H2.mp3";
 import pitchC3 from "../assets/sound/pitch-C3.mp3";
 import pitchCis3 from "../assets/sound/pitch-Cis3.mp3";
 
-const preloadedSounds = {
+export const preloadedSounds = {
   metronomeClick: new Audio(metronomeClick),
   metronomeClick2: new Audio(metronomeClick2),
   pitchC: new Audio(pitchC),

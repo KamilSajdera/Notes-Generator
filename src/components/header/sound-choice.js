@@ -1,3 +1,7 @@
+import { useEffect, useRef } from "react";
+
+import { preloadedSounds } from "../../hooks/use-metronome";
+
 export default function SoundChoice({ register }) {
   const soundsArray = [
     { id: 1, name: "C", value: "C" },
@@ -14,8 +18,35 @@ export default function SoundChoice({ register }) {
     { id: 12, name: "B", value: "H" },
   ];
 
+  const soundsContainerRef = useRef();
+
+  const handlePlaySound = (e) => {
+    e.preventDefault();
+    const pitchOfClickedSound = e.currentTarget.querySelector("input").value;
+    const pitchForObject = pitchOfClickedSound.replace("-", "");
+    preloadedSounds[pitchForObject].play();
+  };
+
+  useEffect(() => {
+    const list = soundsContainerRef.current.querySelectorAll(".pitch");
+
+    list.forEach((element) => {
+      element.addEventListener("contextmenu", handlePlaySound);
+    });
+
+    return () => {
+      list.forEach((element) => {
+        element.removeEventListener("contextmenu", handlePlaySound);
+      });
+    };
+  }, []);
+
   return (
-    <div className="toolbar-row" style={{ width: "100%", marginTop: "10px" }}>
+    <div
+      className="toolbar-row"
+      style={{ width: "100%", marginTop: "10px" }}
+      ref={soundsContainerRef}
+    >
       <h3>Pitch</h3>
       {soundsArray.map((sound) => (
         <div className="pitch" key={sound.id}>
@@ -25,7 +56,7 @@ export default function SoundChoice({ register }) {
             className="pitch-radio"
             value={`pitch-${sound.value}`}
             id={sound.name}
-            {...register("pitch", {required: "Pitch of note is required."})}
+            {...register("pitch", { required: "Pitch of note is required." })}
           />
           <label htmlFor={sound.name} className="pitch-label">
             <span dangerouslySetInnerHTML={{ __html: sound.name }} />
