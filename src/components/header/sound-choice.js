@@ -47,7 +47,7 @@ export default function SoundChoice({ register }) {
       style={{ width: "100%", marginTop: "10px" }}
       ref={soundsContainerRef}
     >
-      <h3>Pitch</h3>
+      <h3>Pitch <span className="info">(Press RMB on the sound to listen to it)</span></h3>
       {soundsArray.map((sound) => (
         <div className="pitch" key={sound.id}>
           <input
