@@ -46,10 +46,10 @@
 
 .clef
 {
-    width: 48px;
+    width: 55px;
     display: block;
     position: absolute;
-    top: -5px;
-    left: -5px;
+    top: -20px;
+    left: -8px;
 }
 
