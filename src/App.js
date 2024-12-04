@@ -7,6 +7,7 @@ import { MetronomeProvider } from "./store/metronome-context";
 
 import "./App.css";
 import Header from "./components/header/header";
+import MobileError from "./components/mobile-error";
 
 function App() {
   const [arrayNotes, setArrayNotes] = useState([]);
@@ -72,9 +73,7 @@ function App() {
             />
           </MetronomeProvider>
         ) : (
-          <p style={{ paddingTop: 70, marginInline: "auto" }}>
-            You cannot use this app in this resolution :(
-          </p>
+          <MobileError />
         )}
       </div>
     </NotesContext.Provider>

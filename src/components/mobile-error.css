@@ -1,0 +1,50 @@
+.wrapper {
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.wrapper h1 {
+    color: #fff;
+    margin-top: 30px;
+}
+
+.wrapper img {
+  width: 70%;
+  margin-inline: auto;
+  margin-top: -20px;
+}
+
+.mobile-title {
+  color: #d29b9b;
+  font-size: 1.35em;
+  margin-top: -20px;
+  font-style: italic;
+  text-shadow: 4px 2px 10px #8b3838;
+}
+
+.mobile-description {
+  color: #dcdcdc;
+  margin-top: 15px;
+  text-align: justify;
+  padding-inline: 5%;
+}
+
+.rotating-phone {
+  filter: invert(1) drop-shadow(3px 3px 5px black);
+  animation-name: shake;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  10% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(-10deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+}
