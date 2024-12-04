@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth < 879) setIsAvailable(false);
+      if (window.innerWidth < 767) setIsAvailable(false);
       else setIsAvailable(true);
     }
 
